@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "projects": {
+    "tech-shop": {
+      "projectType": "application",
+      "root": "apps/tech-shop",
+      "sourceRoot": "apps/tech-shop/src",
+      "prefix": "tech-shop",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/tech-shop",
+            "index": "apps/tech-shop/src/index.html",
+            "main": "apps/tech-shop/src/main.ts",
+            "polyfills": "apps/tech-shop/src/polyfills.ts",
+            "tsConfig": "apps/tech-shop/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/tech-shop/src/favicon.ico",
+              "apps/tech-shop/src/assets"
+            ],
+            "styles": [
+              "apps/tech-shop/src/styles.scss",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/tech-shop/src/environments/environment.ts",
+                  "with": "apps/tech-shop/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "tech-shop:build:production"
+            },
+            "development": {
+              "browserTarget": "tech-shop:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tech-shop:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/tech-shop/src/**/*.ts",
+              "apps/tech-shop/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/tech-shop"
+          ],
+          "options": {
+            "jestConfig": "apps/tech-shop/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "tech-shop-e2e": {
+      "root": "apps/tech-shop-e2e",
+      "sourceRoot": "apps/tech-shop-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/tech-shop-e2e/cypress.json",
+            "devServerTarget": "tech-shop:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "tech-shop:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "options": {
+            "lintFilePatterns": [
+              "apps/tech-shop-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": [
+        "tech-shop"
+      ]
+    }
+  }
+}

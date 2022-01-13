@@ -1,0 +1,35 @@
+<nz-layout class="app__container">
+    <nz-header>
+        <div class="app__header">
+            <span>LOGO</span>
+            <span>КОРЗИНА</span>
+        </div>
+    </nz-header>
+    <nz-layout class="app__content">
+        <nz-sider nz-col
+                  nzSpan="8">
+            <ul nz-menu
+                nzMode="inline">
+                <li *ngFor="let n of nav, let index = index"
+                    [(nzOpen)]="openMap['sub' + index]"
+                    (nzOpenChange)="openHandler('sub' + index)"
+                    [nzTitle]="n.name"
+                    nz-submenu>
+                    <ul>
+                        <li nz-menu-group>
+                            <ul>
+                                <li nz-menu-item>Option 1</li>
+                                <li nz-menu-item>Option 2</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nz-sider>
+        <nz-content nz-col
+                    nzSpan="
+                    16">
+            List
+        </nz-content>
+    </nz-layout>
+</nz-layout>

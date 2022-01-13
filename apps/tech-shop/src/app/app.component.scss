@@ -1,0 +1,40 @@
+$padding: 10px;
+$color-white: white;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+
+  .app {
+    &__content {
+      display: flex;
+      padding: $padding;
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      padding: $padding;
+
+      color: $color-white;
+    }
+  }
+
+  nz-layout {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  nz-layout,
+  nz-header,
+  nz-content,
+  nz-sider {
+    display: block;
+  }
+
+  nz-sider {
+    color: $color-white;
+  }
+}
