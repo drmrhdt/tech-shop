@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { nav } from '../mock/nav_structure';
+import { categories } from '../mock/nav_structure';
 
 @Component({
   selector: 'tech-shop-root',
@@ -9,7 +9,7 @@ import { nav } from '../mock/nav_structure';
 })
 export class AppComponent {
   title = 'tech-shop';
-  nav: {name: string}[] = nav
+  categories = categories;
 
   openMap: { [name: string]: boolean } = {
     sub0: true,
@@ -18,7 +18,7 @@ export class AppComponent {
     sub3: false,
     sub4: false,
     sub5: false,
-    sub6: false
+    sub6: false,
   };
 
   openHandler(value: string): void {

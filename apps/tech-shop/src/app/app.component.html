@@ -5,30 +5,26 @@
             <span>КОРЗИНА</span>
         </div>
     </nz-header>
-    <nz-layout class="app__content">
-        <nz-sider nz-col
-                  nzSpan="8">
-            <ul nz-menu
-                nzMode="inline">
-                <li *ngFor="let n of nav, let index = index"
-                    [(nzOpen)]="openMap['sub' + index]"
-                    (nzOpenChange)="openHandler('sub' + index)"
-                    [nzTitle]="n.name"
-                    nz-submenu>
-                    <ul>
-                        <li nz-menu-group>
-                            <ul>
-                                <li nz-menu-item>Option 1</li>
-                                <li nz-menu-item>Option 2</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nz-sider>
+    <nz-layout class="app__content"
+               nz-row>
+        <ul nz-menu
+            nz-col
+            nzSpan="4">
+            <li *ngFor="let category of categories, let index = index"
+                [(nzOpen)]="openMap['sub' + index]"
+                (nzOpenChange)="openHandler('sub' + index)"
+                [nzTitle]="category.name"
+                nz-submenu>
+                <ul>
+                    <li *ngFor="let subcategory of category.subCategories"
+                        nz-menu-item>
+                        {{subcategory.name}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
         <nz-content nz-col
-                    nzSpan="
-                    16">
+                    nzSpan="20">
             List
         </nz-content>
     </nz-layout>

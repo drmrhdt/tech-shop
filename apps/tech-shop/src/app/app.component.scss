@@ -9,7 +9,6 @@ $color-white: white;
 
   .app {
     &__content {
-      display: flex;
       padding: $padding;
     }
 
@@ -29,12 +28,7 @@ $color-white: white;
 
   nz-layout,
   nz-header,
-  nz-content,
-  nz-sider {
+  nz-content {
     display: block;
-  }
-
-  nz-sider {
-    color: $color-white;
   }
 }

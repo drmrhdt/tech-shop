@@ -8,14 +8,22 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, 
-    BrowserAnimationsModule, 
-    StoreModule.forRoot({}, {}), 
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }), 
-    NzLayoutModule, NzMenuModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    NzLayoutModule,
+    NzMenuModule,
+    NzGridModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
