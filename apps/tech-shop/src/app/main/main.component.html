@@ -1,0 +1,54 @@
+<nz-layout class="main__content"
+           nz-row
+           nzSpan="16">
+    <ul nz-menu
+        nz-col
+        nzSpan="4"
+        class="main__menu">
+        <li *ngFor="let category of categories, let index = index"
+            [(nzOpen)]="openMap['sub' + index]"
+            (nzOpenChange)="openHandler('sub' + index)"
+            [nzTitle]="category.name"
+            nz-submenu>
+            <ul>
+                <li *ngFor="let subcategory of category.subCategories"
+                    nz-menu-item
+                    [routerLink]="['/category/' + subcategory._id]">
+                    {{subcategory.name}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div nz-col
+         nzSpan="12">
+        <nz-carousel nzAutoPlay
+                     class="carousel">
+            <div nz-carousel-content
+                 *ngFor="let category of categories">
+                <div class="carousel__content">
+                    <h3 class="carousel__title">{{ category.name }}</h3>
+                    <button class="carousel__btn"
+                            nz-button
+                            nzType="primary">
+                        Посмотреть предложения
+                    </button>
+                </div>
+            </div>
+        </nz-carousel>
+        <section>
+            <h2>Рекомендации для вас</h2>
+            <div class="card-container">
+                <nz-card class="card"
+                         *ngFor="let suggestion of suggestions">
+                    <div class="card__img-container">
+                        <img class="card__img"
+                             [src]="suggestion.images[0].url"
+                             [alt]="suggestion.name">
+                    </div>
+                    <div>{{suggestion.name}}</div>
+                    <b>{{suggestion.price}}$</b>
+                </nz-card>
+            </div>
+        </section>
+    </div>
+</nz-layout>

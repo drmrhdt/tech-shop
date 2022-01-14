@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~ng-zorro-antd/ng-zorro-antd.min.css';
 
+:root {
+  --padding: 10px;
+
+  --color-white: white;
+  --bg-color: #f0f2f5;
+  --gradient-color-1: #e66465;
+  --gradient-color-2: #9198e5;
+  --gradient-color-3: #364d79;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

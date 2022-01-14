@@ -3,7 +3,8 @@
         <div class="app__header"
              nz-col
              nzSpan="16">
-            <span>SHOP</span>
+            <a class="app__logo"
+               [routerLink]="['/']">SHOP</a>
             <span>
                 <i nz-icon
                    nzType="shopping-cart">
@@ -11,57 +12,5 @@
             </span>
         </div>
     </nz-header>
-    <nz-layout class="app__content"
-               nz-row
-               nzSpan="16">
-        <ul nz-menu
-            nz-col
-            nzSpan="4"
-            class="app__menu">
-            <li *ngFor="let category of categories, let index = index"
-                [(nzOpen)]="openMap['sub' + index]"
-                (nzOpenChange)="openHandler('sub' + index)"
-                [nzTitle]="category.name"
-                nz-submenu>
-                <ul>
-                    <li *ngFor="let subcategory of category.subCategories"
-                        nz-menu-item>
-                        {{subcategory.name}}
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <div nz-col
-             nzSpan="12">
-            <nz-carousel nzAutoPlay
-                         class="carousel">
-                <div nz-carousel-content
-                     *ngFor="let category of categories">
-                    <div class="carousel__content">
-                        <h3 class="carousel__title">{{ category.name }}</h3>
-                        <button class="carousel__btn"
-                                nz-button
-                                nzType="primary">
-                            Посмотреть предложения
-                        </button>
-                    </div>
-                </div>
-            </nz-carousel>
-            <section>
-                <h2>Рекомендации для вас</h2>
-                <div class="card-container">
-                    <nz-card class="card"
-                             *ngFor="let suggestion of suggestions">
-                        <div class="card__img-container">
-                            <img class="card__img"
-                                 [src]="suggestion.images[0].url"
-                                 [alt]="suggestion.name">
-                        </div>
-                        <div>{{suggestion.name}}</div>
-                        <b>{{suggestion.price}}$</b>
-                    </nz-card>
-                </div>
-            </section>
-        </div>
-    </nz-layout>
+    <router-outlet></router-outlet>
 </nz-layout>

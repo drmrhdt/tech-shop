@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
@@ -17,12 +18,15 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 
 import { ShoppingCartOutline } from '@ant-design/icons-angular/icons';
+import { ProductListComponent } from './product-list/product-list.component';
+import { MainComponent } from './main/main.component';
 const icons: IconDefinition[] = [ShoppingCartOutline];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProductListComponent, MainComponent],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({
