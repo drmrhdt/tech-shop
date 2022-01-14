@@ -1,15 +1,23 @@
 <nz-layout class="app__container">
     <nz-header>
-        <div class="app__header">
-            <span>LOGO</span>
-            <span>КОРЗИНА</span>
+        <div class="app__header"
+             nz-col
+             nzSpan="20">
+            <span>SHOP</span>
+            <span>
+                <i nz-icon
+                   nzType="shopping-cart">
+                </i>
+            </span>
         </div>
     </nz-header>
     <nz-layout class="app__content"
-               nz-row>
+               nz-row
+               nz-col
+               nzSpan="20">
         <ul nz-menu
-            nz-col
-            nzSpan="4">
+            nzSpan="
+               4">
             <li *ngFor="let category of categories, let index = index"
                 [(nzOpen)]="openMap['sub' + index]"
                 (nzOpenChange)="openHandler('sub' + index)"
@@ -23,8 +31,7 @@
                 </ul>
             </li>
         </ul>
-        <nz-content nz-col
-                    nzSpan="20">
+        <nz-content nzSpan="20">
             List
         </nz-content>
     </nz-layout>

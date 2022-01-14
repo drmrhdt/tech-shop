@@ -6,9 +6,15 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { IconDefinition } from '@ant-design/icons-angular';
+
+import { ShoppingCartOutline } from '@ant-design/icons-angular/icons';
+const icons: IconDefinition[] = [ShoppingCartOutline];
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +29,8 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
     NzLayoutModule,
     NzMenuModule,
     NzGridModule,
+    NzIconModule,
+    NzIconModule.forRoot(icons),
   ],
   providers: [],
   bootstrap: [AppComponent],

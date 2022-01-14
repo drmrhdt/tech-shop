@@ -1,29 +1,35 @@
 $padding: 10px;
 $color-white: white;
+$bg-color: #f0f2f5;
 
 :host {
   display: flex;
   flex-direction: column;
   height: 100%;
 
+  background-color: $bg-color;
+
 
   .app {
     &__content {
+      display: flex;
+      flex-direction: row;
+      margin: 0 auto;
       padding: $padding;
     }
 
     &__header {
       display: flex;
       justify-content: space-between;
-      padding: $padding;
+      margin: 0 auto;
 
+      font-size: 2em;
       color: $color-white;
-    }
-  }
 
-  nz-layout {
-    width: 90%;
-    margin: 0 auto;
+      [nz-icon] {
+        color: $color-white;
+      }
+    }
   }
 
   nz-layout,
