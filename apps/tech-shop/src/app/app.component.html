@@ -12,9 +12,11 @@
         </div>
     </nz-header>
     <nz-layout class="app__content"
-               nz-col
+               nz-row
                nzSpan="16">
         <ul nz-menu
+            nz-col
+            nzSpan="4"
             class="app__menu">
             <li *ngFor="let category of categories, let index = index"
                 [(nzOpen)]="openMap['sub' + index]"
@@ -29,7 +31,8 @@
                 </ul>
             </li>
         </ul>
-        <div nz-col>
+        <div nz-col
+             nzSpan="12">
             <nz-carousel nzAutoPlay
                          class="carousel">
                 <div nz-carousel-content
