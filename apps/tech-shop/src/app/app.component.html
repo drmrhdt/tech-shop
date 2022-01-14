@@ -12,12 +12,9 @@
         </div>
     </nz-header>
     <nz-layout class="app__content"
-               nz-row
                nz-col
                nzSpan="16">
-        <ul nz-menu
-            nzSpan="
-               4">
+        <ul nz-menu>
             <li *ngFor="let category of categories, let index = index"
                 [(nzOpen)]="openMap['sub' + index]"
                 (nzOpenChange)="openHandler('sub' + index)"
@@ -31,8 +28,19 @@
                 </ul>
             </li>
         </ul>
-        <nz-content nzSpan="16">
-            List
-        </nz-content>
+        <nz-carousel nzAutoPlay
+                     class="carousel">
+            <div nz-carousel-content
+                 *ngFor="let category of categories">
+                <div class="carousel__content">
+                    <h3 class="carousel__title">{{ category.name }}</h3>
+                    <button class="carousel__btn"
+                            nz-button
+                            nzType="primary">
+                        Посмотреть предложения
+                    </button>
+                </div>
+            </div>
+        </nz-carousel>
     </nz-layout>
 </nz-layout>
