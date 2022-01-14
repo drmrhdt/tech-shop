@@ -14,6 +14,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 import { ShoppingCartOutline } from '@ant-design/icons-angular/icons';
 const icons: IconDefinition[] = [ShoppingCartOutline];
@@ -35,6 +36,7 @@ const icons: IconDefinition[] = [ShoppingCartOutline];
     NzIconModule.forRoot(icons),
     NzCarouselModule,
     NzButtonModule,
+    NzCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

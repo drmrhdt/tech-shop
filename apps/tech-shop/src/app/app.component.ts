@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { categories } from '../mock/nav_structure';
+import { suggestions } from '../mock/suggestions';
 
 @Component({
   selector: 'tech-shop-root',
@@ -10,6 +11,7 @@ import { categories } from '../mock/nav_structure';
 export class AppComponent {
   title = 'tech-shop';
   categories = categories;
+  suggestions = suggestions;
 
   openMap: { [name: string]: boolean } = {
     sub0: false,
