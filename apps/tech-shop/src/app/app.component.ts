@@ -12,7 +12,7 @@ export class AppComponent {
   categories = categories;
 
   openMap: { [name: string]: boolean } = {
-    sub0: true,
+    sub0: false,
     sub1: false,
     sub2: false,
     sub3: false,
