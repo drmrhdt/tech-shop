@@ -15,13 +15,12 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { IconDefinition } from '@ant-design/icons-angular';
 
 import { ShoppingCartOutline } from '@ant-design/icons-angular/icons';
-import { ProductListComponent } from './product-list/product-list.component';
 import { MainModule } from './main/main.module';
 
 const icons: IconDefinition[] = [ShoppingCartOutline];
 
 @NgModule({
-  declarations: [AppComponent, ProductListComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
