@@ -1,24 +1,7 @@
 <nz-layout class="main__content"
            nz-row
            nzSpan="16">
-    <ul nz-menu
-        nz-col
-        nzSpan="4"
-        class="main__menu">
-        <li *ngFor="let category of categories, let index = index"
-            [(nzOpen)]="openMap['sub' + index]"
-            (nzOpenChange)="openHandler('sub' + index)"
-            [nzTitle]="category.name"
-            nz-submenu>
-            <ul>
-                <li *ngFor="let subcategory of category.subCategories"
-                    nz-menu-item
-                    [routerLink]="['/category/' + subcategory._id]">
-                    {{subcategory.name}}
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <tech-shop-menu></tech-shop-menu>
     <div nz-col
          nzSpan="12">
         <nz-carousel nzAutoPlay
