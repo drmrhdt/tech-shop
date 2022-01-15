@@ -14,6 +14,7 @@ export class RecommendationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRandomSuggestions();
+    this.getCategories();
   }
 
   async getRandomSuggestions(): Promise<void> {
