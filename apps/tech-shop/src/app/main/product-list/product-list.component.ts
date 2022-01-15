@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
+  products: any[] = [];
+
   constructor(private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -20,5 +22,6 @@ export class ProductListComponent implements OnInit {
       `https://course-angular.javascript.ru/api/products/?subCat=${subcategory}`
     );
     const data = await answer.json();
+    this.products = data.data.items;
   }
 }
