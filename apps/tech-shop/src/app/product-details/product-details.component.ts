@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { ProductDetails } from '../../models/productDetails';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'tech-shop-product-details',
   templateUrl: './product-details.component.html',
@@ -16,9 +18,9 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this._route.params.subscribe(({ productName }) =>
-      this.getProductDetails(productName)
-    );
+    this._route.params
+      .pipe(untilDestroyed(this))
+      .subscribe(({ productName }) => this.getProductDetails(productName));
   }
 
   async getProductDetails(productName: string): Promise<void> {
