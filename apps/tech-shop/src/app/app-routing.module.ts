@@ -3,19 +3,15 @@ import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 
 import { MainComponent } from './main/main.component';
 import { ProductListComponent } from './main/product-list/product-list.component';
-import { RecommendationsComponent } from './main/recommendations/recommendations.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    children: [
-      { path: '', component: RecommendationsComponent },
-      {
-        path: 'category/:categoryName',
-        component: ProductListComponent,
-      },
-    ],
+  },
+  {
+    path: 'category/:categoryName',
+    component: ProductListComponent,
   },
 ]; // sets up routes constant where you define your routes
 

@@ -10,11 +10,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { MenuModule } from '../shared/menu/menu.module';
 
 import { MainComponent } from './main.component';
-import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
-  declarations: [MainComponent, RecommendationsComponent, ProductListComponent],
+  declarations: [MainComponent, ProductListComponent],
   imports: [
     CommonModule,
     RouterModule,
