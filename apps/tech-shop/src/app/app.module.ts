@@ -18,6 +18,7 @@ import { ShoppingCartOutline } from '@ant-design/icons-angular/icons';
 import { MainModule } from './main/main.module';
 import { ProductListModule } from './product-list/product-list.module';
 import { ProductDetailsModule } from './product-details/product-details.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 
 const icons: IconDefinition[] = [ShoppingCartOutline];
 
@@ -39,6 +40,7 @@ const icons: IconDefinition[] = [ShoppingCartOutline];
     MainModule,
     ProductListModule,
     ProductDetailsModule,
+    ShoppingCartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

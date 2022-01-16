@@ -1,0 +1,59 @@
+<tech-shop-wrapper>
+    <div nzSpan="16">
+        <h2 class="shopping-cart__title">Ваш заказ</h2>
+        <form class="shopping-cart__form">
+            <div class="shopping-cart">
+                <h2 class="shopping-cart__title">Ваши данные</h2>
+                <div class="shopping-cart__input--container">
+                    <div>
+                        <label for="name"
+                               class="shopping-cart__label">
+                            Имя:
+                        </label>
+                        <input class="shopping-cart__input"
+                               id="name"
+                               nz-input
+                               placeholder="Джон Сина" />
+                    </div>
+                    <div>
+                        <label for="email"
+                               class="shopping-cart__label">
+                            Email:
+                        </label>
+                        <input class="shopping-cart__input"
+                               id="email"
+                               nz-input
+                               placeholder="example@mail.ru" />
+                    </div>
+                </div>
+                <div class="shopping-cart__input--container">
+                    <div>
+                        <label class="shopping-cart__label"
+                               for="number">
+                            Телефон:
+                        </label>
+                        <input class="shopping-cart__input"
+                               id="number"
+                               nz-input
+                               placeholder="+79999999999" />
+                    </div>
+                    <div>
+                        <label class="shopping-cart__label"
+                               for="address">
+                            Адрес:
+                        </label>
+                        <input class="shopping-cart__input"
+                               id="address"
+                               nz-input
+                               placeholder="Адрес" />
+                    </div>
+                </div>
+            </div>
+            <button class="shopping-cart__btn--order"
+                    nz-button
+                    nzType="primary">
+                Заказать!
+            </button>
+        </form>
+    </div>
+</tech-shop-wrapper>

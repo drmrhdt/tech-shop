@@ -6,11 +6,11 @@
     font-size: 2em;
 
     &--full {
-      color: #fd7e14;
+      color: var(--orange);
     }
 
     &--empty {
-      color: #cccccc;
+      color: var(--light-gray);
     }
   }
 }
