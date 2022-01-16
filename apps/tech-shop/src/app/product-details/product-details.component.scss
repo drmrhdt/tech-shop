@@ -5,7 +5,7 @@
     }
 
     &__characteristic {
-      margin-bottom: 10px !important;
+      margin-bottom: var(--offset) !important;
     }
 
     &__tabset,

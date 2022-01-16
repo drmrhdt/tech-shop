@@ -4,6 +4,10 @@
     display: block;
   }
 
+  .main__offset {
+    margin-left: var(--offset);
+  }
+
   .carousel {
     height: 250px;
     overflow: hidden;

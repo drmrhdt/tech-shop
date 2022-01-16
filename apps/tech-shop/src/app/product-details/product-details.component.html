@@ -17,19 +17,21 @@
             </button>
         </div>
         <h2>Характеристики</h2>
-        <div class="product__characteristic"
-             *ngFor="let characteristic of product?.characteristics; let index = index"
-             [ngStyle]="{display: isShowAllCharacteristics || index < 2 ? 'block' : 'none'}">
+        <details class="product__characteristic"
+                 *ngFor="let characteristic of product?.characteristics; let index = index"
+                 [ngStyle]="{display: isShowAllCharacteristics || index < 2 ? 'block' : 'none'}">
             <strong>{{characteristic.title}}</strong>
             <ul *ngFor="let option of characteristic.items">
                 <li>{{option.name}}: {{option.value}}</li>
             </ul>
-        </div>
-        <a nz-button
-           nzType="link"
-           (click)="isShowAllCharacteristics = !isShowAllCharacteristics">
-            {{ isShowAllCharacteristics ? 'Скрыть' : 'Все характеристики'}}
-        </a>
+        </details>
+        <summary>
+            <a nz-button
+               nzType="link"
+               (click)="isShowAllCharacteristics = !isShowAllCharacteristics">
+                {{ isShowAllCharacteristics ? 'Скрыть' : 'Все характеристики'}}
+            </a>
+        </summary>
         <nz-tabset class="product__tabset">
             <nz-tab nzTitle="Описание">{{product?.description}}</nz-tab>
             <nz-tab nzTitle="Отзывы">

@@ -1,7 +1,8 @@
 <tech-shop-wrapper>
     <tech-shop-menu></tech-shop-menu>
     <div nz-col
-         nzSpan="12">
+         nzSpan="12"
+         class="product-list__offset">
         <ng-container *ngFor="let product of products">
             <nz-card [nzCover]="coverTemplate"
                      class="product">
