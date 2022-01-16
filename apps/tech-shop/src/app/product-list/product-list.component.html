@@ -1,0 +1,24 @@
+<nz-layout class="main__content"
+           nz-row
+           nzSpan="16">
+    <tech-shop-menu></tech-shop-menu>
+    <div nz-col
+         nzSpan="12">
+        <ng-container *ngFor="let product of products">
+            <nz-card [nzCover]="coverTemplate"
+                     class="product">
+                <nz-card-meta [nzTitle]="product.name"></nz-card-meta>
+                <div>{{product.price}}$</div>
+                <button nz-button
+                        nzType="default">
+                    Добавить в корзину
+                </button>
+            </nz-card>
+            <ng-template #coverTemplate>
+                <img alt="example"
+                     class="product__img"
+                     [src]="product.images[0].url" />
+            </ng-template>
+        </ng-container>
+    </div>
+</nz-layout>

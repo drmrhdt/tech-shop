@@ -10,4 +10,14 @@
       max-width: 150px;
     }
   }
+
+  // todo! duplicated
+  .main {
+    &__content {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: var(--padding);
+    }
+  }
 }
