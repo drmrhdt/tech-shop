@@ -1,8 +1,8 @@
 <tech-shop-wrapper>
     <tech-shop-menu></tech-shop-menu>
-    <div nz-col
-         nzSpan="12"
-         class="main__offset">
+    <section nz-col
+             nzSpan="12"
+             class="main__offset">
         <nz-carousel nzAutoPlay
                      class="carousel">
             <div nz-carousel-content
@@ -19,23 +19,27 @@
         </nz-carousel>
         <section>
             <h2>Рекомендации для вас</h2>
-            <div class="card-container">
-                <nz-card class="card"
-                         nzHoverable
-                         *ngFor="let suggestion of suggestions"
-                         [routerLink]="['category', suggestion.subCategory, suggestion._id]">
-                    <div class="card__img-container">
-                        <img class="card__img"
-                             [src]="suggestion.images[0].url"
-                             [alt]="suggestion.name">
-                    </div>
-                    <div>{{suggestion.name}}</div>
-                    <tech-shop-rating [length]="suggestion.feedbacksCount"></tech-shop-rating>
-                    <p>{{suggestion?.feedbacksCount}} {{suggestion.feedbacksCount | pluralize: ['отзыв', 'отзыва',
-                        'отзывов']}}</p>
-                    <b>{{suggestion.price}}$</b>
-                </nz-card>
-            </div>
+            <article class="card-container">
+                <ng-container *ngFor="let suggestion of suggestions">
+                    <nz-card class="card"
+                             nzHoverable
+                             [routerLink]="['category', suggestion.subCategory, suggestion._id]"
+                             [nzCover]="coverTemplate">
+                        <div>{{suggestion.name}}</div>
+                        <tech-shop-rating [length]="suggestion.feedbacksCount"></tech-shop-rating>
+                        <p>{{suggestion?.feedbacksCount}} {{suggestion.feedbacksCount | pluralize: ['отзыв', 'отзыва',
+                            'отзывов']}}</p>
+                        <b>{{suggestion.price}}$</b>
+                    </nz-card>
+                    <ng-template #coverTemplate>
+                        <div class="card__img-container">
+                            <img class="card__img"
+                                 [alt]="suggestion.name"
+                                 [src]="suggestion.images[0].url" />
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </article>
         </section>
-    </div>
+    </section>
 </tech-shop-wrapper>

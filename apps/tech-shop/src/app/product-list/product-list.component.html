@@ -1,14 +1,15 @@
 <tech-shop-wrapper>
     <tech-shop-menu></tech-shop-menu>
-    <div nz-col
-         nzSpan="12"
-         class="product-list__offset">
+    <article nz-col
+             nzSpan="12"
+             class="product-list__offset">
         <ng-container *ngFor="let product of products">
             <nz-card [nzCover]="coverTemplate"
                      class="product">
                 <nz-card-meta [routerLink]="[product._id]"
-                              [nzTitle]="product.name"></nz-card-meta>
-                <div>{{product.price}}$</div>
+                              [nzTitle]="product.name">
+                </nz-card-meta>
+                <strong>{{product.price}}$</strong>
                 <button nz-button
                         nzType="default">
                     Добавить в корзину
@@ -20,5 +21,5 @@
                      [src]="product.images[0].url" />
             </ng-template>
         </ng-container>
-    </div>
+    </article>
 </tech-shop-wrapper>
