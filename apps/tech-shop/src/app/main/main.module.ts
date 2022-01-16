@@ -10,8 +10,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { MenuModule } from '../shared/menu/menu.module';
 import { WrapperModule } from '../shared/wrapper/wrapper.module';
+import { RatingModule } from '../shared/rating/rating.module';
 
 import { MainComponent } from './main.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [MainComponent],
@@ -25,6 +27,8 @@ import { MainComponent } from './main.component';
     NzButtonModule,
     WrapperModule,
     NzLayoutModule,
+    RatingModule,
+    PipesModule,
   ],
   exports: [MainComponent],
 })
