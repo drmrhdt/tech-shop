@@ -4,7 +4,7 @@
              [src]="product ? product.images[0].url : ''"
              alt="">
     </section>
-    <section nzSpan="8"
+    <article nzSpan="8"
              class="product__details">
         <h1>{{product?.name}}</h1>
         <tech-shop-rating [length]="product?.feedbacksCount"></tech-shop-rating>
@@ -17,14 +17,14 @@
             </button>
         </div>
         <h2>Характеристики</h2>
-        <details class="product__characteristic"
-                 *ngFor="let characteristic of product?.characteristics; let index = index"
-                 [ngStyle]="{display: isShowAllCharacteristics || index < 2 ? 'block' : 'none'}">
+        <div class="product__characteristic"
+             *ngFor="let characteristic of product?.characteristics; let index = index"
+             [ngStyle]="{display: isShowAllCharacteristics || index < 2 ? 'block' : 'none'}">
             <strong>{{characteristic.title}}</strong>
             <ul *ngFor="let option of characteristic.items">
                 <li>{{option.name}}: {{option.value}}</li>
             </ul>
-        </details>
+        </div>
         <summary>
             <a nz-button
                nzType="link"
@@ -42,5 +42,5 @@
                 </div>
             </nz-tab>
         </nz-tabset>
-    </section>
+    </article>
 </tech-shop-wrapper>

@@ -21,6 +21,10 @@ ul {
   padding: 0 !important;
 }
 
+summary {
+  list-style: none;
+}
+
 .wrapper {
   display: flex;
   flex-direction: row !important;
