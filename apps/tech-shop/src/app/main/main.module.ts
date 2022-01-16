@@ -8,6 +8,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { MenuModule } from '../shared/menu/menu.module';
+import { WrapperModule } from '../shared/wrapper/wrapper.module';
 
 import { MainComponent } from './main.component';
 
@@ -21,6 +22,7 @@ import { MainComponent } from './main.component';
     NzCarouselModule,
     NzCardModule,
     NzButtonModule,
+    WrapperModule,
   ],
   exports: [MainComponent],
 })

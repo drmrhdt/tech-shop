@@ -1,13 +1,12 @@
-<nz-layout class="main__content"
-           nz-row
-           nzSpan="16">
+<tech-shop-wrapper>
     <tech-shop-menu></tech-shop-menu>
     <div nz-col
          nzSpan="12">
         <ng-container *ngFor="let product of products">
             <nz-card [nzCover]="coverTemplate"
                      class="product">
-                <nz-card-meta [nzTitle]="product.name"></nz-card-meta>
+                <nz-card-meta [routerLink]="[product._id]"
+                              [nzTitle]="product.name"></nz-card-meta>
                 <div>{{product.price}}$</div>
                 <button nz-button
                         nzType="default">
@@ -21,4 +20,4 @@
             </ng-template>
         </ng-container>
     </div>
-</nz-layout>
+</tech-shop-wrapper>

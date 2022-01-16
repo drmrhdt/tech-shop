@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 
 import { MainComponent } from './main/main.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'category/:categoryName',
     component: ProductListComponent,
+  },
+  {
+    path: 'category/:categoryName/:productName',
+    component: ProductDetailsComponent,
   },
 ]; // sets up routes constant where you define your routes
 

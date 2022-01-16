@@ -4,15 +4,6 @@
     display: block;
   }
 
-  .main {
-    &__content {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      padding: var(--padding);
-    }
-  }
-
   .carousel {
     height: 250px;
     overflow: hidden;

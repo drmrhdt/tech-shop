@@ -17,6 +17,7 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { ShoppingCartOutline } from '@ant-design/icons-angular/icons';
 import { MainModule } from './main/main.module';
 import { ProductListModule } from './product-list/product-list.module';
+import { ProductDetailsModule } from './product-details/product-details.module';
 
 const icons: IconDefinition[] = [ShoppingCartOutline];
 
@@ -37,6 +38,7 @@ const icons: IconDefinition[] = [ShoppingCartOutline];
     NzIconModule.forRoot(icons),
     MainModule,
     ProductListModule,
+    ProductDetailsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
