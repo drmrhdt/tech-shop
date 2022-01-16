@@ -5,7 +5,12 @@ export interface ProductDetails {
     items: { name: string; value: string }[];
   }[];
   description: string;
-  feedbacks: number;
+  feedbacks: {
+    _id: string;
+    advantages: string;
+    product: string;
+    rate: number;
+  }[];
   feedbacksCount: number;
   images: { url: string; source: string }[];
   name: string;

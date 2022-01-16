@@ -9,7 +9,9 @@ import { ProductDetails } from '../../models/productDetails';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  product: ProductDetails | null = null;
+  // product: ProductDetails | null = null;
+  product: any;
+  isShowAllCharacteristics = false;
 
   constructor(private _route: ActivatedRoute) {}
 
@@ -25,5 +27,14 @@ export class ProductDetailsComponent implements OnInit {
     );
     const data = await answer.json();
     this.product = data.data;
+  }
+
+  generateArrayFromNumber(n: number) {
+    const a = [];
+    while (n > 0) {
+      a.push(1);
+      n--;
+    }
+    return a;
   }
 }

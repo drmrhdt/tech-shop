@@ -1,3 +1,44 @@
 <tech-shop-wrapper>
-    <p>product-details works!</p>
+    <section nzSpan="8">
+        <img width="400"
+             [src]="product ? product.images[0].url : ''"
+             alt="">
+    </section>
+    <section nzSpan="8"
+             class="product__details">
+        <h1>{{product?.name}}</h1>
+        <tech-shop-rating [length]="product?.feedbacksCount"></tech-shop-rating>
+        <p>{{product?.feedbacksCount}} {{product?.feedbacksCount | pluralize: ['отзыв', 'отзыва', 'отзывов']}}</p>
+        <div nzSpan="4">
+            <p>{{product?.price}}$</p>
+            <button nz-button
+                    nzType="primary">
+                Добавить в корзину
+            </button>
+        </div>
+        <h2>Характеристики</h2>
+        <div class="product__characteristic"
+             *ngFor="let characteristic of product?.characteristics; let index = index"
+             [ngStyle]="{display: isShowAllCharacteristics || index < 2 ? 'block' : 'none'}">
+            <strong>{{characteristic.title}}</strong>
+            <ul *ngFor="let option of characteristic.items">
+                <li>{{option.name}}: {{option.value}}</li>
+            </ul>
+        </div>
+        <a nz-button
+           nzType="link"
+           (click)="isShowAllCharacteristics = !isShowAllCharacteristics">
+            {{ isShowAllCharacteristics ? 'Скрыть' : 'Все характеристики'}}
+        </a>
+        <nz-tabset class="product__tabset">
+            <nz-tab nzTitle="Описание">{{product?.description}}</nz-tab>
+            <nz-tab nzTitle="Отзывы">
+                <div *ngFor="let feedback of product?.feedbacks">
+                    {{feedback._id}}
+                    <p>{{feedback.advantages}}</p>
+                    <tech-shop-rating [length]="feedback.rate"></tech-shop-rating>
+                </div>
+            </nz-tab>
+        </nz-tabset>
+    </section>
 </tech-shop-wrapper>

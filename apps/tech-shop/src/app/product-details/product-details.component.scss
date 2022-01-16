@@ -1,0 +1,15 @@
+:host {
+  .product {
+    &__details {
+      padding: 0 40px;
+    }
+
+    &__characteristic {
+      margin-bottom: 10px !important;
+    }
+
+    &__tabset {
+      width: 600px;
+    }
+  }
+}

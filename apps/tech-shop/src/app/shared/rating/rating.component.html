@@ -1,0 +1,8 @@
+<span *ngFor="let i of length | arrayFromNumber"
+      class="star star--full">
+    &#x2605;
+</span>
+<span *ngFor="let i of (MAX_STARS - length) | arrayFromNumber"
+      class="star star--empty">
+    &#x2605;
+</span>
