@@ -14,7 +14,10 @@ export const initialAuthState: MainState = {
 
 export const mainReducer = createReducer(
   initialAuthState,
-  on(MainActions.setSuggestions, (state: MainState, { suggestions }) => ({
-    suggestions,
-  }))
+  on(
+    MainActions.loadedSuggestions,
+    (state: MainState, { suggestions }): { suggestions: Suggestion[] } => ({
+      suggestions,
+    })
+  )
 );

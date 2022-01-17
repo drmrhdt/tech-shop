@@ -20,18 +20,8 @@ export class MainComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.getRandomSuggestions();
+    this.store.dispatch(MainActions.loadSuggestions());
     this.categories$ = this.store.select(selectCategories);
-  }
-
-  async getRandomSuggestions(): Promise<void> {
-    const answer = await fetch(
-      `https://course-angular.javascript.ru/api/products/suggestion`
-    );
-    const items = await answer.json();
-    this.store.dispatch(
-      MainActions.setSuggestions({ suggestions: items.data.items })
-    );
     this.suggestions$ = this.store.select(selectSuggestions);
   }
 }

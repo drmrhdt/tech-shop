@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -18,12 +20,14 @@ import { MainComponent } from './main.component';
 import { PipesModule } from '../pipes/pipes.module';
 
 import * as fromMain from './reducers';
+import { MainEffects } from './main.effects';
 
 @NgModule({
   declarations: [MainComponent],
   imports: [
     CommonModule,
     RouterModule,
+    HttpClientModule,
     MenuModule,
     NzGridModule,
     NzCarouselModule,
@@ -34,6 +38,7 @@ import * as fromMain from './reducers';
     RatingModule,
     PipesModule,
     StoreModule.forFeature(fromMain.mainFeatureKey, fromMain.mainReducer),
+    EffectsModule.forFeature([MainEffects]),
   ],
   exports: [MainComponent],
 })
