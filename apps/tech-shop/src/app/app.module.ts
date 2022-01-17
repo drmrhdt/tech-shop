@@ -19,6 +19,7 @@ import { MainModule } from './main/main.module';
 import { ProductListModule } from './product-list/product-list.module';
 import { ProductDetailsModule } from './product-details/product-details.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { reducers, metaReducers } from './reducers';
 
 const icons: IconDefinition[] = [ShoppingCartOutline];
 
@@ -28,7 +29,7 @@ const icons: IconDefinition[] = [ShoppingCartOutline];
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

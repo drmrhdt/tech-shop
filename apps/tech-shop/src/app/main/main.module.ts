@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { StoreModule } from '@ngrx/store';
+
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
@@ -14,6 +16,8 @@ import { RatingModule } from '../shared/rating/rating.module';
 
 import { MainComponent } from './main.component';
 import { PipesModule } from '../pipes/pipes.module';
+
+import * as fromMain from './reducers';
 
 @NgModule({
   declarations: [MainComponent],
@@ -29,6 +33,7 @@ import { PipesModule } from '../pipes/pipes.module';
     NzLayoutModule,
     RatingModule,
     PipesModule,
+    StoreModule.forFeature(fromMain.mainFeatureKey, fromMain.mainReducer),
   ],
   exports: [MainComponent],
 })

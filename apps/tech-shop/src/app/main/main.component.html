@@ -20,7 +20,7 @@
         <section>
             <h2>Рекомендации для вас</h2>
             <article class="card-container">
-                <ng-container *ngFor="let suggestion of suggestions">
+                <ng-container *ngFor="let suggestion of suggestions$ | async">
                     <nz-card class="card"
                              nzHoverable
                              [routerLink]="['category', suggestion.subCategory, suggestion._id]"

@@ -1,14 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { Store } from '@ngrx/store';
+
 import { Category, Suggestion } from '../../models';
+import { MainActions } from './action-types';
+import { selectSuggestions } from './main.selectors';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'tech-shop-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   categories: Category[] = [];
-  suggestions: Suggestion[] = [];
+  suggestions$: Observable<Suggestion[]> = new Observable();
+
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.getRandomSuggestions();
@@ -20,7 +28,10 @@ export class MainComponent {
       `https://course-angular.javascript.ru/api/products/suggestion`
     );
     const items = await answer.json();
-    this.suggestions = items.data.items;
+    this.store.dispatch(
+      MainActions.setSuggestions({ suggestions: items.data.items })
+    );
+    this.suggestions$ = this.store.select(selectSuggestions);
   }
 
   async getCategories(): Promise<void> {
