@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Category } from '../../../models/index';
-import { setCategories } from './menu.actions';
+import { MenuActions } from './action-types';
 import { selectCategories } from './menu.selectors';
 
 @Component({
@@ -27,8 +27,8 @@ export class MenuComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.getCategories();
     this.categories$ = this.store.select(selectCategories);
+    this.store.dispatch(MenuActions.loadCategories());
   }
 
   openHandler(value: string): void {
@@ -37,13 +37,5 @@ export class MenuComponent implements OnInit {
         this.openMap[key] = false;
       }
     }
-  }
-
-  async getCategories(): Promise<void> {
-    const answer = await fetch(
-      `https://course-angular.javascript.ru/api/categories`
-    );
-    const items = await answer.json();
-    this.store.dispatch(setCategories({ categories: items.data }));
   }
 }

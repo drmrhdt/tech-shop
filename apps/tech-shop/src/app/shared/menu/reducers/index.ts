@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Category } from '../../../../models';
-import { setCategories } from '../menu.actions';
+import { loadedCategories } from '../menu.actions';
 
 export const menuFeatureKey = 'menu';
 
@@ -14,7 +14,10 @@ export const initialAuthState: MenuState = {
 
 export const menuReducer = createReducer(
   initialAuthState,
-  on(setCategories, (state: MenuState, { categories }) => ({
-    categories,
-  }))
+  on(
+    loadedCategories,
+    (state: MenuState, { categories }): { categories: Category[] } => ({
+      categories,
+    })
+  )
 );
