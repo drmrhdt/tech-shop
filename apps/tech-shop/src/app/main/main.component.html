@@ -6,7 +6,7 @@
         <nz-carousel nzAutoPlay
                      class="carousel">
             <div nz-carousel-content
-                 *ngFor="let category of categories">
+                 *ngFor="let category of categories$ | async">
                 <div class="carousel__content">
                     <h3 class="carousel__title">{{ category.name }}</h3>
                     <button class="carousel__btn"

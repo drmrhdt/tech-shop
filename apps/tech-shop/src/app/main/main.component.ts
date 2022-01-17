@@ -6,6 +6,7 @@ import { Category, Suggestion } from '../../models';
 import { MainActions } from './action-types';
 import { selectSuggestions } from './main.selectors';
 import { Observable } from 'rxjs';
+import { selectCategories } from '../shared/menu/menu.selectors';
 
 @Component({
   selector: 'tech-shop-main',
@@ -13,14 +14,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  categories: Category[] = [];
+  categories$: Observable<Category[]> = new Observable();
   suggestions$: Observable<Suggestion[]> = new Observable();
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.getRandomSuggestions();
-    this.getCategories();
+    this.categories$ = this.store.select(selectCategories);
   }
 
   async getRandomSuggestions(): Promise<void> {
@@ -32,13 +33,5 @@ export class MainComponent implements OnInit {
       MainActions.setSuggestions({ suggestions: items.data.items })
     );
     this.suggestions$ = this.store.select(selectSuggestions);
-  }
-
-  async getCategories(): Promise<void> {
-    const answer = await fetch(
-      `https://course-angular.javascript.ru/api/categories`
-    );
-    const items = await answer.json();
-    this.categories = items.data;
   }
 }

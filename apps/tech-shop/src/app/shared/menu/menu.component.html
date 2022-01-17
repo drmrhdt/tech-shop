@@ -1,7 +1,7 @@
 <nav>
     <ul nz-menu
         class="menu">
-        <li *ngFor="let category of categories, let index = index"
+        <li *ngFor="let category of categories$ | async, let index = index"
             [(nzOpen)]="openMap['sub' + index]"
             (nzOpenChange)="openHandler('sub' + index)"
             [nzTitle]="category.name"

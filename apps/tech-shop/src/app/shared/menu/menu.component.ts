@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { Category } from '../../../models/index';
+import { setCategories } from './menu.actions';
+import { selectCategories } from './menu.selectors';
 
 @Component({
   selector: 'tech-shop-menu',
@@ -8,7 +12,7 @@ import { Category } from '../../../models/index';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  categories: Category[] = [];
+  categories$: Observable<Category[]> = new Observable();
 
   openMap: { [name: string]: boolean } = {
     sub0: false,
@@ -20,8 +24,11 @@ export class MenuComponent implements OnInit {
     sub6: false,
   };
 
+  constructor(private store: Store) {}
+
   ngOnInit(): void {
     this.getCategories();
+    this.categories$ = this.store.select(selectCategories);
   }
 
   openHandler(value: string): void {
@@ -37,6 +44,6 @@ export class MenuComponent implements OnInit {
       `https://course-angular.javascript.ru/api/categories`
     );
     const items = await answer.json();
-    this.categories = items.data;
+    this.store.dispatch(setCategories({ categories: items.data }));
   }
 }
