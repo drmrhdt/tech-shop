@@ -1,3 +1,5 @@
+import { Image } from '.';
+
 export interface ProductDetails {
   brand: string;
   characteristics: {
@@ -12,7 +14,7 @@ export interface ProductDetails {
     rate: number;
   }[];
   feedbacksCount: number;
-  images: { url: string; source: string }[];
+  images: Image[];
   name: string;
   price: number;
   rating: number;
