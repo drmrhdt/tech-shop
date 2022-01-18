@@ -6,11 +6,10 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 
-import { WrapperModule } from '../shared/wrapper/wrapper.module';
-
 import { ProductDetailsComponent } from './product-details.component';
-import { PipesModule } from '../pipes/pipes.module';
-import { RatingModule } from '../shared/rating/rating.module';
+import { PipesModule } from '../../pipes/pipes.module';
+import { RatingModule } from '../../shared/rating/rating.module';
+import { WrapperModule } from '../../shared/wrapper/wrapper.module';
 
 @NgModule({
   declarations: [ProductDetailsComponent],
