@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
+
 import { environment } from '../environments/environment';
 
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -44,6 +46,10 @@ const icons: IconDefinition[] = [ShoppingCartOutline];
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router',
+      routerState: RouterState.Minimal,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
