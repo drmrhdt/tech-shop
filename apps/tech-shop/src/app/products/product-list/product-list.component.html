@@ -3,7 +3,7 @@
     <article nz-col
              nzSpan="12"
              class="product-list__offset">
-        <ng-container *ngFor="let product of products">
+        <ng-container *ngFor="let product of products$ | async">
             <nz-card [nzCover]="coverTemplate"
                      class="product">
                 <nz-card-meta [routerLink]="[product._id]"

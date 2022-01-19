@@ -12,11 +12,11 @@ const routes: Routes = [
     component: MainComponent,
   },
   {
-    path: 'category/:categoryName',
+    path: 'category/:subcategory',
     component: ProductListComponent,
   },
   {
-    path: 'category/:categoryName/:productName',
+    path: 'category/:subcategory/:productName',
     component: ProductDetailsComponent,
   },
   { path: 'shopping-cart', component: ShoppingCartComponent },

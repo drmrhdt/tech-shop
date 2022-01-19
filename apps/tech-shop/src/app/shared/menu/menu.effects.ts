@@ -14,15 +14,13 @@ export class MenuEffects {
     return this.actions$.pipe(
       ofType(MenuActions.loadCategories),
       switchMap(() => this.getCategories()),
-      map((data: any) =>
-        MenuActions.loadedCategories({ categories: data.data })
-      ),
+      map(({ data }) => MenuActions.loadedCategories({ categories: data })),
       catchError(() => EMPTY)
     );
   });
 
   getCategories() {
-    return this._http.get(
+    return this._http.get<any>(
       'https://course-angular.javascript.ru/api/categories'
     );
   }

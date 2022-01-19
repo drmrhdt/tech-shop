@@ -13,15 +13,15 @@ export class MainEffects {
     return this.actions$.pipe(
       ofType(MainActions.loadSuggestions),
       switchMap(() => this.getRandomSuggestions()),
-      map((data: any) =>
-        MainActions.loadedSuggestions({ suggestions: data.data.items })
+      map(({ data: { items } }) =>
+        MainActions.loadedSuggestions({ suggestions: items })
       ),
       catchError(() => EMPTY)
     );
   });
 
   getRandomSuggestions() {
-    return this._http.get(
+    return this._http.get<any>(
       'https://course-angular.javascript.ru/api/products/suggestion'
     );
   }

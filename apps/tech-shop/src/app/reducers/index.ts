@@ -1,5 +1,14 @@
-import { routerReducer } from '@ngrx/router-store';
-import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import {
+  routerReducer,
+  getSelectors,
+  RouterReducerState,
+} from '@ngrx/router-store';
+import {
+  ActionReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  MetaReducer,
+} from '@ngrx/store';
 
 import { environment } from '../../environments/environment';
 
@@ -23,3 +32,16 @@ export function logger(reducer: ActionReducer<any>): ActionReducer<any> {
 export const metaReducers: MetaReducer<AppState>[] = !environment.production
   ? [logger]
   : [];
+
+export const selectRouter =
+  createFeatureSelector<RouterReducerState<any>>('router');
+
+export const {
+  selectCurrentRoute, // select the current route
+  selectQueryParams, // select the current route query params
+  selectQueryParam, // factory function to select a query param
+  selectRouteParams, // select the current route params
+  selectRouteParam, // factory function to select a route param
+  selectRouteData, // select the current route data
+  selectUrl, // select the current url
+} = getSelectors(selectRouter);
