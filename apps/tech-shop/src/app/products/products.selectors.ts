@@ -1,10 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ProductsState } from './reducers';
+import { ProductsState, selectAll } from './reducers';
 
 export const selectProductsState =
   createFeatureSelector<ProductsState>('products');
 
-export const selectProducts = createSelector(
-  selectProductsState,
-  ({ products }) => products
-);
+export const selectProducts = createSelector(selectProductsState, selectAll);
