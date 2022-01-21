@@ -1,23 +1,22 @@
 import { createReducer, on } from '@ngrx/store';
 import { Category } from '../../../../models';
 import { loadedCategories } from '../menu.actions';
+import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
 export const menuFeatureKey = 'menu';
 
-export interface MenuState {
-  categories: Category[];
-}
+export type MenuState = EntityState<Category>;
 
-export const initialAuthState: MenuState = {
-  categories: [],
-};
+export const adapter = createEntityAdapter<Category>({
+  selectId: (category: Category) => category._id,
+});
+export const initialMenuState = adapter.getInitialState();
 
 export const menuReducer = createReducer(
-  initialAuthState,
-  on(
-    loadedCategories,
-    (state: MenuState, { categories }): { categories: Category[] } => ({
-      categories,
-    })
+  initialMenuState,
+  on(loadedCategories, (state: MenuState, { categories }) =>
+    adapter.setAll(categories, state)
   )
 );
+
+export const { selectAll } = adapter.getSelectors();

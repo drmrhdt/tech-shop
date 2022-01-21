@@ -1,9 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { MainState } from './reducers';
+import { MainState, selectAll } from './reducers';
 
 export const selectMainState = createFeatureSelector<MainState>('main');
 
-export const selectSuggestions = createSelector(
-  selectMainState,
-  (main) => main.suggestions
-);
+export const selectSuggestions = createSelector(selectMainState, selectAll);
