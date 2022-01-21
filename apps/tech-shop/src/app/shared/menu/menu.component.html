@@ -1,18 +1,23 @@
-<nav>
-    <ul nz-menu
-        class="menu">
-        <li *ngFor="let category of categories$ | async, let index = index"
-            [(nzOpen)]="openMap['sub' + index]"
-            (nzOpenChange)="openHandler('sub' + index)"
-            [nzTitle]="category.name"
-            nz-submenu>
-            <ul>
-                <li *ngFor="let subcategory of category.subCategories"
-                    nz-menu-item
-                    [routerLink]="['/category/' + subcategory._id]">
-                    {{subcategory.name}}
-                </li>
-            </ul>
-        </li>
-    </ul>
-</nav>
+<nz-skeleton [nzActive]="true"
+             *ngIf="isLoading$ | async; else navigation"
+             class="menu__skeleton">isloading</nz-skeleton>
+<ng-template #navigation>
+    <nav>
+        <ul nz-menu
+            class="menu">
+            <li *ngFor="let category of categories$ | async, let index = index"
+                [(nzOpen)]="openMap['sub' + index]"
+                (nzOpenChange)="openHandler('sub' + index)"
+                [nzTitle]="category.name"
+                nz-submenu>
+                <ul>
+                    <li *ngFor="let subcategory of category.subCategories"
+                        nz-menu-item
+                        [routerLink]="['/category/' + subcategory._id]">
+                        {{subcategory.name}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</ng-template>

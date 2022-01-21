@@ -2,5 +2,10 @@
   .menu {
     align-self: flex-start;
     margin-right: 1em;
+
+    &__skeleton {
+      width: 160px;
+      height: 300px;
+    }
   }
 }

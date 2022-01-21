@@ -14,7 +14,7 @@ export class MenuEffects {
     return this.actions$.pipe(
       ofType(MenuActions.loadCategories),
       switchMap(() => this.getCategories()),
-      map(({ data }) => MenuActions.loadedCategories({ categories: data })),
+      map(({ data }) => MenuActions.categoriesLoaded({ categories: data })),
       catchError(() => EMPTY)
     );
   });

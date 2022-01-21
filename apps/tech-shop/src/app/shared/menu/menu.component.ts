@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { filter, first, tap, Observable } from 'rxjs';
 
 import { Category } from '../../../models/index';
 import { MenuActions } from './action-types';
-import { selectCategories } from './menu.selectors';
+import {
+  selectCategories,
+  selectCategoriesLoaded,
+  selectIsLoading,
+} from './menu.selectors';
 
 @Component({
   selector: 'tech-shop-menu',
@@ -13,6 +17,7 @@ import { selectCategories } from './menu.selectors';
 })
 export class MenuComponent implements OnInit {
   categories$: Observable<Category[]> = new Observable();
+  isLoading$: Observable<boolean> = new Observable();
 
   openMap: { [name: string]: boolean } = {
     sub0: false,
@@ -28,7 +33,20 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.categories$ = this.store.select(selectCategories);
-    this.store.dispatch(MenuActions.loadCategories());
+    this.store
+      .select(selectCategoriesLoaded)
+      .pipe(
+        tap((categoriesLoaded) => {
+          if (!categoriesLoaded) {
+            this.store.dispatch(MenuActions.loadCategories());
+          }
+        }),
+        // without filter categoriesLoaded flag with emit a value that would terminate the observable BEFORE data fetching took place
+        filter((categoriesLoaded) => categoriesLoaded), // make sure that we FETCHED data
+        first() // first operator will terminate the observable only when categoriesLoaded === true
+      )
+      .subscribe();
+    this.isLoading$ = this.store.select(selectIsLoading);
   }
 
   openHandler(value: string): void {
