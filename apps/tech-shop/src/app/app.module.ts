@@ -21,7 +21,6 @@ import { ShoppingCartOutline } from '@ant-design/icons-angular/icons';
 import { MainModule } from './main/main.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { reducers, metaReducers } from './reducers';
-import { ProductsModule } from './products/products.module';
 
 const icons: IconDefinition[] = [ShoppingCartOutline];
 
@@ -36,7 +35,6 @@ const icons: IconDefinition[] = [ShoppingCartOutline];
     NzIconModule,
     NzIconModule.forRoot(icons),
     MainModule,
-    ProductsModule,
     ShoppingCartModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
