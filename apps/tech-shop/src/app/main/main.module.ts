@@ -11,6 +11,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 
 import { MenuModule } from '../shared/menu/menu.module';
 import { WrapperModule } from '../shared/wrapper/wrapper.module';
@@ -33,6 +34,7 @@ import { MainEffects } from './main.effects';
     NzCarouselModule,
     NzCardModule,
     NzButtonModule,
+    NzSkeletonModule,
     WrapperModule,
     NzLayoutModule,
     RatingModule,

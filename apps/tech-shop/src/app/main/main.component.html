@@ -3,20 +3,26 @@
     <section nz-col
              nzSpan="12"
              class="main__offset">
-        <nz-carousel nzAutoPlay
-                     class="carousel">
-            <div nz-carousel-content
-                 *ngFor="let category of categories$ | async">
-                <div class="carousel__content">
-                    <h3 class="carousel__title">{{ category.name }}</h3>
-                    <button class="carousel__btn"
-                            nz-button
-                            nzType="primary">
-                        Посмотреть предложения
-                    </button>
+        <nz-skeleton [nzActive]="true"
+                     *ngIf="isLoadingCategories$ | async; else carousel"
+                     class="main__skeleton">
+        </nz-skeleton>
+        <ng-template #carousel>
+            <nz-carousel nzAutoPlay
+                         class="carousel">
+                <div nz-carousel-content
+                     *ngFor="let category of categories$ | async">
+                    <div class="carousel__content">
+                        <h3 class="carousel__title">{{ category.name }}</h3>
+                        <button class="carousel__btn"
+                                nz-button
+                                nzType="primary">
+                            Посмотреть предложения
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </nz-carousel>
+            </nz-carousel>
+        </ng-template>
         <section>
             <h2>Рекомендации для вас</h2>
             <article class="card-container">

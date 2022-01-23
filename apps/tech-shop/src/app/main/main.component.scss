@@ -6,6 +6,10 @@
 
   .main__offset {
     margin-left: var(--offset);
+
+    &__skeleton {
+      height: 250px;
+    }
   }
 
   .carousel {
