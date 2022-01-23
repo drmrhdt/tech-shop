@@ -6,12 +6,20 @@
     margin-bottom: var(--offset);
     padding: 20px;
 
+    &__btn {
+      margin-top: 10px;
+    }
+
     &__img {
       max-width: 150px;
     }
 
     &-list__offset {
       margin-left: var(--offset);
+    }
+
+    &__price {
+      font-size: 1.3em;
     }
   }
 }

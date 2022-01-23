@@ -9,8 +9,10 @@
                 <nz-card-meta [routerLink]="[product._id]"
                               [nzTitle]="product.name">
                 </nz-card-meta>
-                <strong>{{product.price}}$</strong>
-                <button nz-button
+                <tech-shop-rating [length]="product.feedbacksCount"></tech-shop-rating>
+                <div><strong class="product__price">{{product.price}}$</strong></div>
+                <button class="product__btn"
+                        nz-button
                         nzType="default"
                         (click)="addToCart(product)">
                     Добавить в корзину
