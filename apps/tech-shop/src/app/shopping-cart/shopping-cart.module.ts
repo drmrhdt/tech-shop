@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { StoreModule } from '@ngrx/store';
+
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -8,6 +10,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { WrapperModule } from '../shared/wrapper/wrapper.module';
+import * as fromShoppingCart from './reducer';
 
 @NgModule({
   declarations: [ShoppingCartComponent],
@@ -18,6 +21,10 @@ import { WrapperModule } from '../shared/wrapper/wrapper.module';
     NzLayoutModule,
     NzGridModule,
     NzButtonModule,
+    StoreModule.forFeature(
+      fromShoppingCart.shoppingCartFeatureKey,
+      fromShoppingCart.shoppingCartReducer
+    ),
   ],
   exports: [ShoppingCartComponent],
 })

@@ -8,6 +8,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Product } from '../../../models';
 import { selectProducts } from '../products.selectors';
 import { ProductActions } from '../action-types';
+import { ShoppingCartActions } from '../../shopping-cart/action-types';
 
 @UntilDestroy({ checkProperties: true })
 @Component({
@@ -29,5 +30,9 @@ export class ProductListComponent implements OnInit {
         )
       );
     this.products$ = this.store.select(selectProducts);
+  }
+
+  addToCart(product: Product): void {
+    this.store.dispatch(ShoppingCartActions.addProductToCart({ product }));
   }
 }

@@ -11,7 +11,8 @@
                 </nz-card-meta>
                 <strong>{{product.price}}$</strong>
                 <button nz-button
-                        nzType="default">
+                        nzType="default"
+                        (click)="addToCart(product)">
                     Добавить в корзину
                 </button>
             </nz-card>

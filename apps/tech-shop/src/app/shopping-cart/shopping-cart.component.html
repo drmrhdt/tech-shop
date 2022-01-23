@@ -1,6 +1,11 @@
 <tech-shop-wrapper>
     <div nzSpan="16">
         <h2 class="shopping-cart__title">Ваш заказ</h2>
+        <ul>
+            <li *ngFor="let product of products$ | async">
+                {{product.name}}, количество: {{product.count}}
+            </li>
+        </ul>
         <form class="shopping-cart__form">
             <div class="shopping-cart">
                 <h2 class="shopping-cart__title">Ваши данные</h2>
