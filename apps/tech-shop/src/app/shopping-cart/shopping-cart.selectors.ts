@@ -9,3 +9,8 @@ export const selectProductsFromShoppingCart = createSelector(
   selectShoppingCartState,
   selectAll
 );
+
+export const selectTotalInShoppingCart = createSelector(
+  selectShoppingCartState,
+  ({ totalItems }) => totalItems
+);

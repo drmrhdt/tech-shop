@@ -10,6 +10,7 @@
                    nzType="shopping-cart"
                    [routerLink]="['shopping-cart']">
                 </i>
+                {{totalProducts$ | async}}
             </span>
         </div>
     </nz-header>

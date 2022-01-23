@@ -12,6 +12,7 @@ export interface ProductInCart extends Product {
 
 export interface ShoppingCartState extends EntityState<ProductInCart> {
   isLoading: boolean;
+  totalItems: number;
 }
 
 export const adapter = createEntityAdapter({
@@ -20,6 +21,7 @@ export const adapter = createEntityAdapter({
 
 export const initialShoppingCartState = adapter.getInitialState({
   isLoading: false,
+  totalItems: 0,
 });
 export const shoppingCartReducer = createReducer(
   initialShoppingCartState,
@@ -32,14 +34,27 @@ export const shoppingCartReducer = createReducer(
 
       return adapter.updateOne(
         { id: updatedProduct._id, changes: updatedProduct },
-        { ...state, isLoading: false }
+        {
+          ...state,
+          isLoading: false,
+          totalItems: countTotalProducts(currentProducts) + 1,
+        }
       );
     }
     return adapter.setAll([updatedProduct, ...selectAll(state)], {
       ...state,
       isLoading: false,
+      totalItems: countTotalProducts(currentProducts) + 1,
     });
   })
 );
 
 export const { selectAll } = adapter.getSelectors();
+
+function countTotalProducts(products: ProductInCart[]) {
+  const sum = products.reduce(
+    (partial_sum: number, { count }) => partial_sum + count,
+    0
+  );
+  return sum;
+}
