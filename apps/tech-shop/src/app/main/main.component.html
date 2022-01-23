@@ -24,8 +24,7 @@
             </nz-carousel>
         </ng-template>
         <section>
-            <!-- isLoadingSuggestions$ | async -->
-            <div *ngIf="true; else suggestions"
+            <div *ngIf="isLoadingSuggestions$ | async; else suggestions"
                  class="suggestions__skeleton">
                 <nz-skeleton-element nzType="input"
                                      nzSize="default"
