@@ -5,17 +5,25 @@ import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
 export const mainFeatureKey = 'main';
 
-export type MainState = EntityState<Suggestion>;
+export interface MainState extends EntityState<Suggestion> {
+  isLoading: boolean;
+}
 
 export const adapter = createEntityAdapter<Suggestion>({
   selectId: (suggestion: Suggestion) => suggestion._id,
 });
-export const initialSuggestionState = adapter.getInitialState();
+export const initialSuggestionState = adapter.getInitialState({
+  isLoading: false,
+});
 
 export const mainReducer = createReducer(
   initialSuggestionState,
+  on(
+    MainActions.loadSuggestions,
+    (state): MainState => ({ ...state, isLoading: true })
+  ),
   on(MainActions.loadedSuggestions, (state: MainState, { suggestions }) =>
-    adapter.setAll(suggestions, state)
+    adapter.setAll(suggestions, { ...state, isLoading: false })
   )
 );
 

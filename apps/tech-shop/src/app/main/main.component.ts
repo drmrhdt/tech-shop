@@ -4,7 +4,10 @@ import { Store } from '@ngrx/store';
 
 import { Category, Suggestion } from '../../models';
 import { MainActions } from './action-types';
-import { selectSuggestions } from './main.selectors';
+import {
+  selectIsLoadingSuggestions,
+  selectSuggestions,
+} from './main.selectors';
 import { Observable } from 'rxjs';
 import {
   selectCategories,
@@ -20,6 +23,7 @@ export class MainComponent implements OnInit {
   categories$: Observable<Category[]> = new Observable();
   suggestions$: Observable<Suggestion[]> = new Observable();
   isLoadingCategories$: Observable<boolean> = new Observable();
+  isLoadingSuggestions$: Observable<boolean> = new Observable();
 
   constructor(private store: Store) {}
 
@@ -28,5 +32,6 @@ export class MainComponent implements OnInit {
     this.categories$ = this.store.select(selectCategories);
     this.suggestions$ = this.store.select(selectSuggestions);
     this.isLoadingCategories$ = this.store.select(selectIsLoading);
+    this.isLoadingSuggestions$ = this.store.select(selectIsLoadingSuggestions);
   }
 }

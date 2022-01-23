@@ -5,7 +5,7 @@
              class="main__offset">
         <nz-skeleton [nzActive]="true"
                      *ngIf="isLoadingCategories$ | async; else carousel"
-                     class="main__skeleton">
+                     class="carousel-skeleton">
         </nz-skeleton>
         <ng-template #carousel>
             <nz-carousel nzAutoPlay
@@ -24,28 +24,72 @@
             </nz-carousel>
         </ng-template>
         <section>
-            <h2>Рекомендации для вас</h2>
-            <article class="card-container">
-                <ng-container *ngFor="let suggestion of suggestions$ | async">
-                    <nz-card class="card"
-                             nzHoverable
-                             [routerLink]="['category', suggestion.subCategory, suggestion._id]"
-                             [nzCover]="coverTemplate">
-                        <div>{{suggestion.name}}</div>
-                        <tech-shop-rating [length]="suggestion.feedbacksCount"></tech-shop-rating>
-                        <p>{{suggestion?.feedbacksCount}} {{suggestion.feedbacksCount | pluralize: ['отзыв', 'отзыва',
-                            'отзывов']}}</p>
-                        <b>{{suggestion.price}}$</b>
-                    </nz-card>
-                    <ng-template #coverTemplate>
-                        <div class="card__img-container">
-                            <img class="card__img"
-                                 [alt]="suggestion.name"
-                                 [src]="suggestion.images[0].url" />
-                        </div>
-                    </ng-template>
-                </ng-container>
-            </article>
+            <!-- isLoadingSuggestions$ | async -->
+            <div *ngIf="true; else suggestions"
+                 class="suggestions__skeleton">
+                <nz-skeleton-element nzType="input"
+                                     nzSize="default"
+                                     class="suggestions__skeleton-title"
+                                     [nzActive]="true">
+                </nz-skeleton-element>
+                <div class="suggestions__skeleton-container">
+                    <nz-space *ngFor="let i of 6 | arrayFromNumber"
+                              nzDirection="vertical"
+                              class="suggestions__skeleton-item">
+                        <nz-skeleton-element nzType="image"
+                                             nzSize="default"
+                                             class="suggestions__skeleton-element"
+                                             [nzActive]="true">
+                        </nz-skeleton-element>
+                        <nz-skeleton-element nzType="input"
+                                             nzSize="small"
+                                             class="suggestions__skeleton-element"
+                                             [nzActive]="true">
+                        </nz-skeleton-element>
+                        <nz-skeleton-element nzType="input"
+                                             nzSize="small"
+                                             class="suggestions__skeleton-element"
+                                             [nzActive]="true">
+                        </nz-skeleton-element>
+                        <nz-skeleton-element nzType="input"
+                                             nzSize="small"
+                                             class="suggestions__skeleton-element"
+                                             [nzActive]="true">
+                        </nz-skeleton-element>
+                        <nz-skeleton-element nzType="input"
+                                             nzSize="small"
+                                             class="suggestions__skeleton-element"
+                                             [nzActive]="true">
+                        </nz-skeleton-element>
+                    </nz-space>
+                </div>
+            </div>
+            <ng-template #suggestions>
+                <h2>Рекомендации для вас</h2>
+                <article class="card-container">
+                    <ng-container *ngFor="let suggestion of suggestions$ | async">
+                        <nz-card class="card"
+                                 nzHoverable
+                                 [routerLink]="['category', suggestion.subCategory, suggestion._id]"
+                                 [nzCover]="coverTemplate">
+                            <div>{{suggestion.name}}</div>
+                            <tech-shop-rating [length]="suggestion.feedbacksCount"></tech-shop-rating>
+                            <p>{{suggestion?.feedbacksCount}} {{suggestion.feedbacksCount | pluralize: ['отзыв',
+                                'отзыва',
+                                'отзывов']}}</p>
+                            <b>{{suggestion.price}}$</b>
+                        </nz-card>
+                        <ng-template #coverTemplate>
+                            <div class="card__img-container">
+                                <img class="card__img"
+                                     [alt]="suggestion.name"
+                                     [src]="suggestion.images[0].url" />
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </article>
+            </ng-template>
+
         </section>
     </section>
 </tech-shop-wrapper>
