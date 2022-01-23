@@ -1,0 +1,21 @@
+:host {
+  .product {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: var(--offset);
+    padding: 20px;
+
+    &__btn {
+      margin-top: 10px;
+    }
+
+    &__img {
+      max-width: 150px;
+    }
+
+    &__price {
+      font-size: 1.3em;
+    }
+  }
+}

@@ -4,25 +4,7 @@
              nzSpan="12"
              class="product-list__offset">
         <ng-container *ngFor="let product of products$ | async">
-            <nz-card [nzCover]="coverTemplate"
-                     class="product">
-                <nz-card-meta [routerLink]="[product._id]"
-                              [nzTitle]="product.name">
-                </nz-card-meta>
-                <tech-shop-rating [length]="product.feedbacksCount"></tech-shop-rating>
-                <div><strong class="product__price">{{product.price}}$</strong></div>
-                <button class="product__btn"
-                        nz-button
-                        nzType="default"
-                        (click)="addToCart(product)">
-                    Добавить в корзину
-                </button>
-            </nz-card>
-            <ng-template #coverTemplate>
-                <img alt="example"
-                     class="product__img"
-                     [src]="product.images[0].url" />
-            </ng-template>
+            <tech-shop-product-card [product]="product"></tech-shop-product-card>
         </ng-container>
     </article>
 </tech-shop-wrapper>
