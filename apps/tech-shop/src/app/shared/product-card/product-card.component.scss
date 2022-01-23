@@ -2,9 +2,8 @@
   .product {
     display: flex;
     flex-direction: row;
-    width: 100%;
     margin-bottom: var(--offset);
-    padding: 20px;
+    padding: 10px 0 0 10px;
 
     &__btn {
       margin-top: 10px;

@@ -2,8 +2,32 @@
     <div nzSpan="16">
         <h2 class="shopping-cart__title">Ваш заказ</h2>
         <ul>
-            <li *ngFor="let product of products$ | async">
-                {{product.name}}, количество: {{product.count}}
+            <li class="shopping-cart__container"
+                *ngFor="let product of products$ | async">
+                <tech-shop-product-card [product]="product"
+                                        [isShowButton]="false"
+                                        [isShowPrice]="false">
+                </tech-shop-product-card>
+                <button nz-button
+                        nzType="primary"
+                        [nzSize]="'small'"
+                        nzShape="circle">
+                    <i nz-icon
+                       nzType="minus"
+                       nzTheme="outline">
+                    </i>
+                </button>
+                {{product.count}}
+                <button nz-button
+                        nzType="primary"
+                        [nzSize]="'small'"
+                        nzShape="circle">
+                    <i nz-icon
+                       nzType="plus"
+                       nzTheme="outline">
+                    </i>
+                </button>
+                {{product.price * product.count}}$
             </li>
         </ul>
         <form class="shopping-cart__form">

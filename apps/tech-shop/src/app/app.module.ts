@@ -17,12 +17,20 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { IconDefinition } from '@ant-design/icons-angular';
 
-import { ShoppingCartOutline } from '@ant-design/icons-angular/icons';
+import {
+  ShoppingCartOutline,
+  PlusOutline,
+  MinusOutline,
+} from '@ant-design/icons-angular/icons';
 import { MainModule } from './main/main.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { reducers, metaReducers } from './reducers';
 
-const icons: IconDefinition[] = [ShoppingCartOutline];
+const icons: IconDefinition[] = [
+  ShoppingCartOutline,
+  PlusOutline,
+  MinusOutline,
+];
 
 @NgModule({
   declarations: [AppComponent],

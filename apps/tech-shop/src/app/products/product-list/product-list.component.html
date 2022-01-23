@@ -1,10 +1,10 @@
 <tech-shop-wrapper>
     <tech-shop-menu></tech-shop-menu>
-    <article nz-col
+    <section nz-col
              nzSpan="12"
              class="product-list__offset">
-        <ng-container *ngFor="let product of products$ | async">
-            <tech-shop-product-card [product]="product"></tech-shop-product-card>
-        </ng-container>
-    </article>
+        <tech-shop-product-card *ngFor="let product of products$ | async"
+                                [product]="product">
+        </tech-shop-product-card>
+    </section>
 </tech-shop-wrapper>
