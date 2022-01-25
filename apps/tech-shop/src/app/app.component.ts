@@ -3,6 +3,9 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
+import { ProductInCart } from './shopping-cart/reducer';
+import { setProductsToCart } from './shopping-cart/shopping-cart.actions';
+
 import { selectTotalInShoppingCart } from './shopping-cart/shopping-cart.selectors';
 
 @Component({
@@ -16,6 +19,14 @@ export class AppComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
+    this.store.dispatch(
+      setProductsToCart({
+        products: JSON.parse(
+          localStorage.getItem('cart') || '[]'
+        ) as ProductInCart[],
+      })
+    );
+
     this.totalProducts$ = this.store.select(selectTotalInShoppingCart);
   }
 }
