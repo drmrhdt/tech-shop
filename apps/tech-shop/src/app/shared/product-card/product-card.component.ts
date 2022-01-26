@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Product } from '../../../models';
+import { ProductActions } from '../../products/action-types';
 import { ShoppingCartActions } from '../../shopping-cart/action-types';
 
 @Component({
@@ -17,5 +18,9 @@ export class ProductCardComponent {
 
   addToCart(product: Product): void {
     this.store.dispatch(ShoppingCartActions.addProductToCart({ product }));
+  }
+
+  onClickCard() {
+    this.store.dispatch(ProductActions.openProductDetails());
   }
 }

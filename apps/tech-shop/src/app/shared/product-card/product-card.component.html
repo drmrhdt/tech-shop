@@ -1,7 +1,8 @@
 <nz-card [nzCover]="coverTemplate"
          class="product">
     <nz-card-meta [routerLink]="[product._id]"
-                  [nzTitle]="product.name">
+                  [nzTitle]="product.name"
+                  (click)="onClickCard()">
     </nz-card-meta>
     <tech-shop-rating [length]="product.feedbacksCount"></tech-shop-rating>
     <div><strong class="product__price"

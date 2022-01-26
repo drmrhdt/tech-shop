@@ -1,16 +1,18 @@
 <tech-shop-wrapper>
     <section nzSpan="8">
         <img class="product__image"
-             [src]="product ? product.images[0].url : ''"
-             [alt]="product.name">
+             [src]="(product$ | async)!.images[0].url ?? ''"
+             [alt]="(product$ | async)?.name">
     </section>
     <article nzSpan="8"
              class="product__details">
-        <h1>{{product?.name}}</h1>
-        <tech-shop-rating [length]="product?.feedbacksCount"></tech-shop-rating>
-        <p>{{product?.feedbacksCount}} {{product?.feedbacksCount | pluralize: ['отзыв', 'отзыва', 'отзывов']}}</p>
+        <h1>{{(product$ | async)?.name}}</h1>
+        <tech-shop-rating [length]="(product$ | async)?.feedbacksCount || 0"></tech-shop-rating>
+        <p>{{(product$ | async)?.feedbacksCount}} {{(product$ | async)?.feedbacksCount || 0 | pluralize: ['отзыв',
+            'отзыва',
+            'отзывов']}}</p>
         <div nzSpan="4">
-            <p>{{product?.price}}$</p>
+            <p>{{(product$ | async)?.price}}$</p>
             <button nz-button
                     nzType="primary">
                 Добавить в корзину
@@ -18,7 +20,7 @@
         </div>
         <h2>Характеристики</h2>
         <div class="product__characteristic"
-             *ngFor="let characteristic of product?.characteristics; let index = index"
+             *ngFor="let characteristic of (product$ | async)?.characteristics; let index = index"
              [ngStyle]="{display: isShowAllCharacteristics || index < 2 ? 'block' : 'none'}">
             <strong>{{characteristic.title}}</strong>
             <ul *ngFor="let option of characteristic.items">
@@ -33,9 +35,9 @@
             </a>
         </summary>
         <nz-tabset class="product__tabset">
-            <nz-tab nzTitle="Описание">{{product?.description}}</nz-tab>
+            <nz-tab nzTitle="Описание">{{(product$ | async)?.description}}</nz-tab>
             <nz-tab nzTitle="Отзывы">
-                <div *ngFor="let feedback of product?.feedbacks">
+                <div *ngFor="let feedback of (product$ | async)?.feedbacks">
                     {{feedback._id}}
                     <p>{{feedback.advantages}}</p>
                     <tech-shop-rating [length]="feedback.rate"></tech-shop-rating>

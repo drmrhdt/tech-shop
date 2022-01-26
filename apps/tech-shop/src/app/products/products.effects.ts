@@ -8,6 +8,7 @@ import { catchError, EMPTY, map, switchMap, withLatestFrom } from 'rxjs';
 
 import { ProductActions } from './action-types';
 import { selectRouteParams } from '../reducers';
+import { Product, ProductDetails } from '../../models';
 
 @Injectable()
 export class ProductsEffects {
@@ -17,8 +18,8 @@ export class ProductsEffects {
     private store: Store
   ) {}
 
-  products$ = createEffect(() => {
-    return this.actions$.pipe(
+  products$ = createEffect(() =>
+    this.actions$.pipe(
       ofType(ProductActions.loadAllProductsAccordingToSubcategory),
       withLatestFrom(this.store.pipe(select(selectRouteParams))),
       switchMap((data: any) => this.getProductList(data[1].subcategory)),
@@ -28,12 +29,35 @@ export class ProductsEffects {
         })
       ),
       catchError(() => EMPTY)
+    )
+  );
+
+  productDetails$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ProductActions.loadProductDetails),
+      withLatestFrom(this.store.pipe(select(selectRouteParams))),
+      switchMap((data: any) => this.getProductDetails(data[1].productName)),
+      map(({ data }) =>
+        ProductActions.loadedProductDetails({
+          product: data,
+        })
+      ),
+      catchError(() => EMPTY)
     );
   });
 
   getProductList(subcategory: string) {
-    return this._http.get<any>(
+    return this._http.get<{
+      data: { items: Product[]; prices: { min: number; max: number } };
+      error: string;
+    }>(
       `https://course-angular.javascript.ru/api/products/?subCat=${subcategory}`
+    );
+  }
+
+  getProductDetails(productName: string) {
+    return this._http.get<{ data: ProductDetails; error: string }>(
+      `https://course-angular.javascript.ru/api/products/${productName}`
     );
   }
 }
