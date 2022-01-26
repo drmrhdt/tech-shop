@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { Product } from '../../../models';
-import { selectProducts } from '../products.selectors';
+import { selectIsLoading, selectProducts } from '../products.selectors';
 import { ProductActions } from '../action-types';
 
 @UntilDestroy({ checkProperties: true })
@@ -17,6 +17,7 @@ import { ProductActions } from '../action-types';
 })
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]> = new Observable();
+  isLoading$: Observable<boolean> = new Observable();
 
   constructor(private store: Store, private _route: ActivatedRoute) {}
 
@@ -29,5 +30,6 @@ export class ProductListComponent implements OnInit {
         )
       );
     this.products$ = this.store.select(selectProducts);
+    this.isLoading$ = this.store.select(selectIsLoading);
   }
 }

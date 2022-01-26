@@ -20,8 +20,16 @@ export const initialProductsState = adapter.getInitialState({
 export const productsReducer = createReducer(
   initialProductsState,
   on(
+    ProductActions.loadAllProductsAccordingToSubcategory,
+    (state): ProductsState => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
     ProductActions.allProductsAccordingToSubcategoryLoaded,
-    (state, { products }) => adapter.setAll(products, state)
+    (state, { products }) =>
+      adapter.setAll(products, { ...state, isLoading: false })
   ),
   on(
     ProductActions.loadProductDetails,

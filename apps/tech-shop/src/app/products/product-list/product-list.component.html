@@ -1,10 +1,46 @@
 <tech-shop-wrapper>
     <tech-shop-menu></tech-shop-menu>
-    <section nz-col
-             nzSpan="12"
-             class="product-list__offset">
-        <tech-shop-product-card *ngFor="let product of products$ | async"
-                                [product]="product">
-        </tech-shop-product-card>
-    </section>
+    <div *ngIf="isLoading$ | async; else cardList"
+         class="product-list__skeleton-container">
+        <nz-space *ngFor="let i of 6 | arrayFromNumber"
+                  nzDirection="horizontal">
+            <nz-skeleton-element nzType="image"
+                                 nzSize="default"
+                                 class="product-list__skeleton-element"
+                                 [nzActive]="true">
+            </nz-skeleton-element>
+            <div class="product-list__skeleton-text">
+                <nz-skeleton-element nzType="input"
+                                     nzSize="small"
+                                     class="product-list__skeleton-element"
+                                     [nzActive]="true">
+                </nz-skeleton-element>
+                <nz-skeleton-element nzType="input"
+                                     nzSize="small"
+                                     class="product-list__skeleton-element"
+                                     [nzActive]="true">
+                </nz-skeleton-element>
+                <nz-skeleton-element nzType="input"
+                                     nzSize="small"
+                                     class="product-list__skeleton-element"
+                                     [nzActive]="true">
+                </nz-skeleton-element>
+                <nz-skeleton-element nzType="input"
+                                     nzSize="small"
+                                     class="product-list__skeleton-element"
+                                     [nzActive]="true">
+                </nz-skeleton-element>
+            </div>
+        </nz-space>
+    </div>
+
+    <ng-template #cardList>
+        <section nz-col
+                 nzSpan="12"
+                 class="product-list__offset">
+            <tech-shop-product-card *ngFor="let product of products$ | async"
+                                    [product]="product">
+            </tech-shop-product-card>
+        </section>
+    </ng-template>
 </tech-shop-wrapper>

@@ -10,3 +10,8 @@ export const selectDetailedProduct = createSelector(
   selectProductsState,
   ({ selectedProduct }) => selectedProduct
 );
+
+export const selectIsLoading = createSelector(
+  selectProductsState,
+  ({ isLoading }) => isLoading
+);
