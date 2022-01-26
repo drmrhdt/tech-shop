@@ -12,7 +12,7 @@
             'отзыва',
             'отзывов']}}</p>
         <div nzSpan="4">
-            <p>{{(product$ | async)?.price}}$</p>
+            <p><strong>{{(product$ | async)?.price}}$</strong></p>
             <button nz-button
                     nzType="primary"
                     (click)="addToCart()">
