@@ -31,7 +31,7 @@ export const productsReducer = createReducer(
     })
   ),
   on(
-    ProductActions.loadedProductDetails,
+    ProductActions.productDetailsLoaded,
     (state, { product }): ProductsState => ({
       ...state,
       selectedProduct: product,

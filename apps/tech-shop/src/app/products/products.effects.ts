@@ -38,7 +38,7 @@ export class ProductsEffects {
       withLatestFrom(this.store.pipe(select(selectRouteParams))),
       switchMap((data: any) => this.getProductDetails(data[1].productName)),
       map(({ data }) =>
-        ProductActions.loadedProductDetails({
+        ProductActions.productDetailsLoaded({
           product: data,
         })
       ),

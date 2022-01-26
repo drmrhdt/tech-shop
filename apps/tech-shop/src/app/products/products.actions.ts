@@ -17,7 +17,7 @@ export const loadProductDetails = createAction(
   '[Porduct Details] Load Product Details'
 );
 
-export const loadedProductDetails = createAction(
+export const productDetailsLoaded = createAction(
   '[Porduct Details] Loaded Product Details',
   props<{ product: ProductDetails }>()
 );
