@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
+import { ShoppingCartActions } from './action-types';
 import { ProductInCart } from './reducer';
 import { selectProductsFromShoppingCart } from './shopping-cart.selectors';
 
@@ -19,5 +20,9 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$ = this.store.select(selectProductsFromShoppingCart);
+  }
+
+  addToCart(product: ProductInCart) {
+    this.store.dispatch(ShoppingCartActions.addProductToCart({ product }));
   }
 }
