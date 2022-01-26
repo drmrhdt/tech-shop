@@ -5,12 +5,18 @@
     margin-bottom: var(--offset);
     padding: 10px 0 0 10px;
 
+    &__name {
+      cursor: pointer;
+    }
+
     &__btn {
       margin-top: 10px;
     }
 
     &__img {
       max-width: 150px;
+
+      cursor: pointer;
     }
 
     &__price {

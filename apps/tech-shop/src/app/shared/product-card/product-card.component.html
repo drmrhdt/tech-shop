@@ -1,8 +1,9 @@
 <nz-card [nzCover]="coverTemplate"
          class="product">
-    <nz-card-meta [routerLink]="[product._id]"
+    <nz-card-meta class="product__name"
                   [nzTitle]="product.name"
-                  (click)="onClickCard()">
+                  (click)="onClickCard()"
+                  [routerLink]="[product._id]">
     </nz-card-meta>
     <tech-shop-rating [length]="product.feedbacksCount"></tech-shop-rating>
     <div><strong class="product__price"
@@ -18,5 +19,6 @@
 <ng-template #coverTemplate>
     <img alt="example"
          class="product__img"
-         [src]="product.images[0].url" />
+         [src]="product.images[0].url"
+         [routerLink]="[product._id]" />
 </ng-template>
