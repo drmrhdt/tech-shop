@@ -14,7 +14,8 @@
         <div nzSpan="4">
             <p>{{(product$ | async)?.price}}$</p>
             <button nz-button
-                    nzType="primary">
+                    nzType="primary"
+                    (click)="addToCart()">
                 Добавить в корзину
             </button>
         </div>
