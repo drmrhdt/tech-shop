@@ -23,6 +23,8 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   addToCart(product: ProductInCart) {
-    this.store.dispatch(ShoppingCartActions.addProductToCart({ product }));
+    this.store.dispatch(
+      ShoppingCartActions.increaseProductCountInCart({ product })
+    );
   }
 }

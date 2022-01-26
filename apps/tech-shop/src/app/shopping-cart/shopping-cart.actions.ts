@@ -8,6 +8,16 @@ export const addProductToCart = createAction(
   props<{ product: Product }>()
 );
 
+export const increaseProductCountInCart = createAction(
+  '[Shopping Cart] Increase Product Count in Shopping Cart',
+  props<{ product: Product }>()
+);
+
+export const removeProductFromCart = createAction(
+  '[Shopping Cart] Remove Product From Shopping Cart',
+  props<{ product: Product }>()
+);
+
 export const setProductsToCart = createAction(
   '[App Component] Set Products To Shopping Cart',
   props<{ products: ProductInCart[] }>()
