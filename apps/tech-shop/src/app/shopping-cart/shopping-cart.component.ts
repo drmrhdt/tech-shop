@@ -27,4 +27,8 @@ export class ShoppingCartComponent implements OnInit {
       ShoppingCartActions.increaseProductCountInCart({ product })
     );
   }
+
+  removeFromCart(product: ProductInCart) {
+    this.store.dispatch(ShoppingCartActions.removeProductFromCart({ product }));
+  }
 }

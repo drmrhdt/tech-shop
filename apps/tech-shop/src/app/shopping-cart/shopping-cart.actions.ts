@@ -15,7 +15,7 @@ export const increaseProductCountInCart = createAction(
 
 export const removeProductFromCart = createAction(
   '[Shopping Cart] Remove Product From Shopping Cart',
-  props<{ product: Product }>()
+  props<{ product: ProductInCart }>()
 );
 
 export const setProductsToCart = createAction(
