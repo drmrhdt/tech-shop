@@ -8,28 +8,34 @@
                                         [isShowButton]="false"
                                         [isShowPrice]="false">
                 </tech-shop-product-card>
-                <button nz-button
-                        nzType="primary"
-                        [nzSize]="'small'"
-                        nzShape="circle"
-                        (click)="removeFromCart(product)">
-                    <i nz-icon
-                       nzType="minus"
-                       nzTheme="outline">
-                    </i>
-                </button>
-                {{product.count}}
-                <button nz-button
-                        nzType="primary"
-                        [nzSize]="'small'"
-                        (click)="addToCart(product)"
-                        nzShape="circle">
-                    <i nz-icon
-                       nzType="plus"
-                       nzTheme="outline">
-                    </i>
-                </button>
-                {{product.price * product.count}}$
+                <div class="shopping-cart__actions">
+                    <p class="shopping-cart__total-price">
+                        <strong>{{product.price * product.count}}$</strong>
+                    </p>
+                    <div>
+                        <button nz-button
+                                nzType="primary"
+                                [nzSize]="'small'"
+                                nzShape="circle"
+                                (click)="removeFromCart(product)">
+                            <i nz-icon
+                               nzType="minus"
+                               nzTheme="outline">
+                            </i>
+                        </button>
+                        {{product.count}}
+                        <button nz-button
+                                nzType="primary"
+                                [nzSize]="'small'"
+                                (click)="addToCart(product)"
+                                nzShape="circle">
+                            <i nz-icon
+                               nzType="plus"
+                               nzTheme="outline">
+                            </i>
+                        </button>
+                    </div>
+                </div>
             </li>
         </ul>
         <form class="shopping-cart__form">

@@ -1,6 +1,5 @@
 :host {
   .shopping-cart {
-    width: 700px;
     padding: 10px;
 
     border: 1px solid var(--gray);
@@ -9,6 +8,18 @@
     &__container {
       display: flex;
       align-items: center;
+    }
+
+    &__total-price {
+      margin-bottom: 10px;
+
+      font-size: 1.3em;
+    }
+
+    &__actions {
+      margin-left: auto;
+
+      text-align: center;
     }
 
     &__form {
@@ -40,7 +51,7 @@
     }
 
     &__input {
-      width: 300px;
+      width: 400px;
     }
 
     &__btn--order {
