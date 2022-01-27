@@ -5,10 +5,10 @@
              nzSpan="16">
             <a class="app__logo"
                [routerLink]="['/']">SHOP</a>
-            <span>
+            <span class="app__icon-cart"
+                  [routerLink]="['shopping-cart']">
                 <i nz-icon
-                   nzType="shopping-cart"
-                   [routerLink]="['shopping-cart']">
+                   nzType="shopping-cart">
                 </i>
                 {{totalProducts$ | async}}
             </span>

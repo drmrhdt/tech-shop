@@ -22,5 +22,9 @@
     &__logo {
       color: var(--color-white);
     }
+
+    &__icon-cart {
+      cursor: pointer;
+    }
   }
 }
