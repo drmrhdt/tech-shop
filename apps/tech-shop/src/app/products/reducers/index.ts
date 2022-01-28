@@ -8,6 +8,8 @@ export const mainFeatureKey = 'products';
 export interface ProductsState extends EntityState<Product> {
   selectedProduct: any;
   isLoading: boolean;
+  prices: { min: number; max: number };
+  brands?: string[];
 }
 
 export const adapter = createEntityAdapter<Product>({
@@ -16,6 +18,8 @@ export const adapter = createEntityAdapter<Product>({
 export const initialProductsState = adapter.getInitialState({
   selectedProduct: {},
   isLoading: false,
+  prices: { min: 0, max: 0 },
+  // brands: [],
 });
 export const productsReducer = createReducer(
   initialProductsState,
@@ -24,12 +28,13 @@ export const productsReducer = createReducer(
     (state): ProductsState => ({
       ...state,
       isLoading: true,
+      prices: { min: 0, max: 0 },
     })
   ),
   on(
     ProductActions.allProductsAccordingToSubcategoryLoaded,
-    (state, { products }) =>
-      adapter.setAll(products, { ...state, isLoading: false })
+    (state, { products, prices, brands }) =>
+      adapter.setAll(products, { ...state, isLoading: false, prices, brands })
   ),
   on(
     ProductActions.loadProductDetails,

@@ -4,7 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { select } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, EMPTY, map, switchMap, withLatestFrom } from 'rxjs';
+import {
+  catchError,
+  EMPTY,
+  map,
+  switchMap,
+  forkJoin,
+  withLatestFrom,
+} from 'rxjs';
 
 import { ProductActions } from './action-types';
 import { selectRouteParams } from '../reducers';
@@ -22,10 +29,17 @@ export class ProductsEffects {
     this.actions$.pipe(
       ofType(ProductActions.loadAllProductsAccordingToSubcategory),
       withLatestFrom(this.store.pipe(select(selectRouteParams))),
-      switchMap((data: any) => this.getProductList(data[1].subcategory)),
-      map(({ data: { items } }) =>
+      switchMap((data: any) =>
+        forkJoin([
+          this.getProductList(data[1].subcategory),
+          this.getBrands(data[1].subcategory),
+        ])
+      ),
+      map((data) =>
         ProductActions.allProductsAccordingToSubcategoryLoaded({
-          products: items,
+          products: data[0].data.items,
+          prices: data[0].data.prices,
+          brands: data[1].data,
         })
       ),
       catchError(() => EMPTY)
@@ -58,6 +72,12 @@ export class ProductsEffects {
   getProductDetails(productName: string) {
     return this._http.get<{ data: ProductDetails; error: string }>(
       `https://course-angular.javascript.ru/api/products/${productName}`
+    );
+  }
+
+  getBrands(subcategory: string) {
+    return this._http.get<{ data: string[]; error: string }>(
+      `https://course-angular.javascript.ru/api/brands?subCat=${subcategory}&prices=0,2000`
     );
   }
 }

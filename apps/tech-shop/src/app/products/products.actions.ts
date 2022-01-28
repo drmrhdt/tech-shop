@@ -6,7 +6,11 @@ export const loadAllProductsAccordingToSubcategory = createAction(
 );
 export const allProductsAccordingToSubcategoryLoaded = createAction(
   '[Load Products Effect] All Products According To Subcategory Loaded',
-  props<{ products: Product[] }>()
+  props<{
+    products: Product[];
+    prices: { min: number; max: number };
+    brands: string[];
+  }>()
 );
 
 export const openProductDetails = createAction(

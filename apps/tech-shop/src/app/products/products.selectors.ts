@@ -11,7 +11,22 @@ export const selectDetailedProduct = createSelector(
   ({ selectedProduct }) => selectedProduct
 );
 
+export const selectBrands = createSelector(
+  selectProductsState,
+  ({ brands }) => brands
+);
+
 export const selectIsLoading = createSelector(
   selectProductsState,
   ({ isLoading }) => isLoading
+);
+
+export const selectMinPrice = createSelector(
+  selectProductsState,
+  ({ prices }) => prices.min
+);
+
+export const selectMaxPrice = createSelector(
+  selectProductsState,
+  ({ prices }) => prices.max
 );
