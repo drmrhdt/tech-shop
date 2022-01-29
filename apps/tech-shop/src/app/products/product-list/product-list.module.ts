@@ -7,6 +7,7 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { ProductListComponent } from './product-list.component';
 import { WrapperModule } from '../../shared/wrapper/wrapper.module';
@@ -28,6 +29,7 @@ import { PipesModule } from '../../pipes/pipes.module';
     NzSkeletonModule,
     NzSpaceModule,
     NzInputModule,
+    NzButtonModule,
     PipesModule,
   ],
   exports: [ProductListComponent],

@@ -50,5 +50,16 @@
         width: 50%;
       }
     }
+
+    &__btn--apply {
+      display: flex;
+      margin-top: var(--offset);
+      margin-left: auto;
+    }
+
+    &__not-found {
+      font-size: 2em;
+      text-align: center;
+    }
   }
 }

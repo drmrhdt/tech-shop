@@ -10,6 +10,13 @@ export interface ProductsState extends EntityState<Product> {
   isLoading: boolean;
   prices: { min: number; max: number };
   brands?: string[];
+  filters?: {
+    filterString: string;
+    brands: string[];
+    min: number;
+    max: number;
+    subcategory: string;
+  };
 }
 
 export const adapter = createEntityAdapter<Product>({
@@ -19,16 +26,16 @@ export const initialProductsState = adapter.getInitialState({
   selectedProduct: {},
   isLoading: false,
   prices: { min: 0, max: 0 },
-  // brands: [],
 });
 export const productsReducer = createReducer(
   initialProductsState,
   on(
     ProductActions.loadAllProductsAccordingToSubcategory,
-    (state): ProductsState => ({
+    (state, { filters }): ProductsState => ({
       ...state,
       isLoading: true,
       prices: { min: 0, max: 0 },
+      filters,
     })
   ),
   on(

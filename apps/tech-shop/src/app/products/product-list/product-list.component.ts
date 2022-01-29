@@ -50,24 +50,38 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(console.warn);
+    this._route.params.pipe(untilDestroyed(this)).subscribe(({ subcategory }) =>
+      this.store.dispatch(
+        ProductActions.loadAllProductsAccordingToSubcategory({
+          filters: {
+            ...this.form.value,
+            subcategory,
+          },
+        })
+      )
+    );
 
-    this._route.params
-      .pipe(untilDestroyed(this))
-      .subscribe(() =>
-        this.store.dispatch(
-          ProductActions.loadAllProductsAccordingToSubcategory()
-        )
-      );
+    this.form
+      .get('filterString')
+      ?.valueChanges.pipe(untilDestroyed(this))
+      .subscribe(() => this.updateProducts());
+
     this.products$ = this.store.select(selectProducts);
     this.brands$ = this.store.select(selectBrands);
     this.isLoading$ = this.store.select(selectIsLoading);
 
     this.minPrice$ = this.store.select(selectMinPrice);
     this.maxPrice$ = this.store.select(selectMaxPrice);
+
+    this.store
+      .select(selectMinPrice)
+      .subscribe((min) => this.form.get('min')?.patchValue(min));
+    this.store
+      .select(selectMaxPrice)
+      .subscribe((max) => this.form.get('max')?.patchValue(max));
   }
 
-  checkBrand(brand: string): void {
+  toggleBrand(brand: string): void {
     if (this.brands?.value.includes(brand)) {
       const brandIndex = this.brands?.value.findIndex(
         (b: string) => b === brand
@@ -76,5 +90,17 @@ export class ProductListComponent implements OnInit {
     } else {
       (this.brands as FormArray).push(new FormControl(brand));
     }
+    this.updateProducts();
+  }
+
+  updateProducts(): void {
+    this.store.dispatch(
+      ProductActions.loadAllProductsAccordingToSubcategory({
+        filters: {
+          ...this.form.value,
+          subcategory: this._route.snapshot.params['subcategory'],
+        },
+      })
+    );
   }
 }

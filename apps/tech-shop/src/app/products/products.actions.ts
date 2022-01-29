@@ -2,7 +2,16 @@ import { createAction, props } from '@ngrx/store';
 import { Product, ProductDetails } from '../../models';
 
 export const loadAllProductsAccordingToSubcategory = createAction(
-  '[Products List] Load All Products According To Subcategory'
+  '[Products List] Load All Products According To Subcategory',
+  props<{
+    filters: {
+      filterString: string;
+      brands: string[];
+      min: number;
+      max: number;
+      subcategory: string;
+    };
+  }>()
 );
 export const allProductsAccordingToSubcategoryLoaded = createAction(
   '[Load Products Effect] All Products According To Subcategory Loaded',
@@ -18,10 +27,10 @@ export const openProductDetails = createAction(
 );
 
 export const loadProductDetails = createAction(
-  '[Porduct Details] Load Product Details'
+  '[Product Details] Load Product Details'
 );
 
 export const productDetailsLoaded = createAction(
-  '[Porduct Details] Loaded Product Details',
+  '[Product Details] Loaded Product Details',
   props<{ product: ProductDetails }>()
 );

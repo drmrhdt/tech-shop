@@ -14,7 +14,7 @@
                        nz-checkbox
                        *ngFor="let brand of brands$ | async"
                        [formControlName]="brand"
-                       (click)="checkBrand(brand)">
+                       (click)="toggleBrand(brand)">
                     {{brand}}
                 </label>
             </ng-container>
@@ -37,6 +37,12 @@
                    step="1"
                    [placeholder]="'Максимум ' + (maxPrice$ | async)"
                    [value]="maxPrice$ | async" />
+            <button nz-button
+                    nzType="primary"
+                    class="product-list__btn--apply"
+                    (click)="updateProducts()">
+                Применить
+            </button>
         </ng-container>
     </div>
     <div *ngIf="isLoading$ | async; else cardList"
@@ -77,9 +83,14 @@
         <section nz-col
                  nzSpan="12"
                  class="product-list__offset">
-            <tech-shop-product-card *ngFor="let product of products$ | async"
-                                    [product]="product">
-            </tech-shop-product-card>
+            <ng-container *ngIf="(products$ | async)?.length; else noProducts">
+                <tech-shop-product-card *ngFor="let product of products$ | async"
+                                        [product]="product">
+                </tech-shop-product-card>
+            </ng-container>
+            <ng-template #noProducts>
+                <p class="product-list__not-found">К сожалению, нет товаров, удовлетворяющих условиям</p>
+            </ng-template>
         </section>
     </ng-template>
 </tech-shop-wrapper>

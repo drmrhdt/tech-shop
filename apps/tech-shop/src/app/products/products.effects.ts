@@ -28,12 +28,12 @@ export class ProductsEffects {
   products$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.loadAllProductsAccordingToSubcategory),
-      withLatestFrom(this.store.pipe(select(selectRouteParams))),
-      switchMap((data: any) =>
-        forkJoin([
-          this.getProductList(data[1].subcategory),
-          this.getBrands(data[1].subcategory),
-        ])
+      switchMap(
+        ({ filters: { brands, filterString, max, min, subcategory } }) =>
+          forkJoin([
+            this.getProductList(subcategory, max, min, brands, filterString),
+            this.getBrands(subcategory),
+          ])
       ),
       map((data) =>
         ProductActions.allProductsAccordingToSubcategoryLoaded({
@@ -60,12 +60,22 @@ export class ProductsEffects {
     );
   });
 
-  getProductList(subcategory: string) {
+  getProductList(
+    subcategory: string,
+    max?: number,
+    min?: number,
+    brands?: string[],
+    text?: string
+  ) {
+    const pricesString = min && max ? `&prices=${min},${max}` : '';
+    const brandsString = brands?.length ? `&brands=${brands.join(',')}` : '';
+    const textString = text ? `&text=${text}` : '';
+
     return this._http.get<{
       data: { items: Product[]; prices: { min: number; max: number } };
       error: string;
     }>(
-      `https://course-angular.javascript.ru/api/products/?subCat=${subcategory}`
+      `https://course-angular.javascript.ru/api/products/?subCat=${subcategory}${pricesString}${textString}${brandsString}`
     );
   }
 
