@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Category } from '../../../../models';
+import { Category } from '@models/index';
 import { categoriesLoaded, loadCategories } from '../menu.actions';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 

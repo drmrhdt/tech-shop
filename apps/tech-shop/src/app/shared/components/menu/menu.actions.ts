@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Category } from '../../../models';
+import { Category } from '@models/index';
 
 export const loadCategories = createAction('[Menu Component] Load Categories');
 

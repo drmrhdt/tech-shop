@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
-import { Product } from '../../../models';
+import { Product } from '@models/index';
 import {
   selectIsLoading,
   selectProducts,

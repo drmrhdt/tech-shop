@@ -10,10 +10,8 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { ProductListComponent } from './product-list.component';
-import { WrapperModule } from '../../shared/wrapper/wrapper.module';
-import { MenuModule } from '../../shared/menu/menu.module';
-import { ProductCardModule } from '../../shared/product-card/product-card.module';
-import { PipesModule } from '../../pipes/pipes.module';
+import { ProductCardModule, MenuModule, WrapperModule } from '@shared/index';
+import { PipesModule } from '@shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [ProductListComponent],

@@ -7,7 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { ProductListModule } from './product-list/product-list.module';
 import { ProductDetailsModule } from './product-details/product-details.module';
-import { RatingModule } from '../shared/rating/rating.module';
+import { RatingModule } from '@shared/index';
 import { ProductsEffects } from './store/products.effects';
 import * as fromProducts from './store/reducers';
 import { ProductListComponent } from './product-list/product-list.component';

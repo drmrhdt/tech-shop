@@ -16,7 +16,7 @@ import {
 
 import { ProductActions } from './action-types';
 import { selectRouteParams } from '../../reducers';
-import { Product, ProductDetails } from '../../../models';
+import { Product, ProductDetails } from '@models/index';
 
 @Injectable()
 export class ProductsEffects {

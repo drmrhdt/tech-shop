@@ -19,7 +19,14 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "src",
+    "paths": {
+      "@shared/*": ["app/shared/*"],
+      "@models/*": ["app/models/*"],
+      "@products/*": ["app/products/*"],
+      "@shopping-cart/*": ["app/shopping-cart/*"]
+    }
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

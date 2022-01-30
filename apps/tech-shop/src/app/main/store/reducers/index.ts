@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { MainActions } from '../action-types';
-import { Suggestion } from '../../../../models/suggestion';
+import { Suggestion } from '@models/index';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
 export const mainFeatureKey = 'main';

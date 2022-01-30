@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { ProductDetails } from '../../../models/productDetails';
+import { ProductDetails } from '@models/index';
 import { ProductActions } from '../store/action-types';
 import { Observable } from 'rxjs';
 import {
   selectDetailedProduct,
   selectIsLoading,
 } from '../store/products.selectors';
-import { ShoppingCartActions } from '../../shopping-cart/store/action-types';
+import { ShoppingCartActions } from '@shopping-cart/store/action-types';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy({ checkProperties: true })

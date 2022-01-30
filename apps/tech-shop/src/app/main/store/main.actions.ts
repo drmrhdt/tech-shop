@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Suggestion } from '../../../models';
+import { Suggestion } from '@models/index';
 
 export const loadSuggestions = createAction('[Main Page] Load Suggestions');
 

@@ -10,9 +10,8 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
 import { ProductDetailsComponent } from './product-details.component';
-import { PipesModule } from '../../pipes/pipes.module';
-import { RatingModule } from '../../shared/rating/rating.module';
-import { WrapperModule } from '../../shared/wrapper/wrapper.module';
+import { PipesModule } from '@shared/pipes/pipes.module';
+import { RatingModule, WrapperModule } from '@shared/index';
 
 @NgModule({
   declarations: [ProductDetailsComponent],

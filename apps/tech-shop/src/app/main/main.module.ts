@@ -14,12 +14,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 
-import { MenuModule } from '../shared/menu/menu.module';
-import { WrapperModule } from '../shared/wrapper/wrapper.module';
-import { RatingModule } from '../shared/rating/rating.module';
+import { RatingModule, MenuModule, WrapperModule } from '@shared/index';
 
 import { MainComponent } from './main.component';
-import { PipesModule } from '../pipes/pipes.module';
+import { PipesModule } from '@shared/pipes/pipes.module';
 
 import * as fromMain from './store/reducers';
 import { MainEffects } from './store/main.effects';

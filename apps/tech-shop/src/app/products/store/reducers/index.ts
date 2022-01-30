@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
-import { Product } from '../../../../models';
+import { Product } from '@models/index';
 import { ProductActions } from '../action-types';
 
 export const mainFeatureKey = 'products';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-import { Category, Suggestion } from '../../models';
+import { Category, Suggestion } from '@models/index';
 import { MainActions } from './store/action-types';
 import {
   selectIsLoadingSuggestions,
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 import {
   selectCategories,
   selectIsLoading,
-} from '../shared/menu/menu.selectors';
+} from '@shared/components/menu/menu.selectors';
 
 @Component({
   selector: 'tech-shop-main',

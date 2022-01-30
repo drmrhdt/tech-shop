@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { filter, first, tap, Observable } from 'rxjs';
 
-import { Category } from '../../../models/index';
+import { Category } from '@models/index';
 import { MenuActions } from './action-types';
 import {
   selectCategories,

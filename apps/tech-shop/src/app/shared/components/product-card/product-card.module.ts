@@ -5,8 +5,8 @@ import { RouterModule } from '@angular/router';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
-import { RatingModule } from '../../shared/rating/rating.module';
 import { ProductCardComponent } from './product-card.component';
+import { RatingModule } from '../rating/rating.module';
 
 @NgModule({
   declarations: [ProductCardComponent],
