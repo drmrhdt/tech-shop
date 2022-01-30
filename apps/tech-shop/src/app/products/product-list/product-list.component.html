@@ -19,24 +19,49 @@
                 </label>
             </ng-container>
             <h3 class="product-list__offset--top">Цена</h3>
-            <label for="minPrice">От</label>
-            <input id="minPrice"
-                   nz-input
-                   formControlName="min"
-                   type="number"
-                   step="1"
-                   [min]="minPrice$ | async"
-                   [max]="maxPrice$ | async"
-                   [placeholder]="'Минимум ' + (minPrice$ | async)"
-                   [value]="minPrice$ | async" />
-            <label for="maxPrice">До</label>
-            <input id="maxPrice"
-                   nz-input
-                   formControlName="max"
-                   type="number"
-                   step="1"
-                   [placeholder]="'Максимум ' + (maxPrice$ | async)"
-                   [value]="maxPrice$ | async" />
+
+            <label for="minPrice">
+                От
+            </label>
+            <ng-container *ngIf="isLoading$ | async; else minPriceField">
+                <nz-skeleton-element [nzActive]="true"
+                                     nzType="input"
+                                     nzSize="small"
+                                     class="product-list__skeleton-price">
+                </nz-skeleton-element>
+            </ng-container>
+            <ng-template #minPriceField>
+                <input id="minPrice"
+                       nz-input
+                       formControlName="min"
+                       type="number"
+                       step="1"
+                       [min]="minPrice$ | async"
+                       [max]="maxPrice$ | async"
+                       [placeholder]="'Минимум ' + (minPrice$ | async)"
+                       [value]="minPrice$ | async" />
+            </ng-template>
+
+            <label for="maxPrice">
+                До
+            </label>
+            <ng-container *ngIf="isLoading$ | async; else maxPriceField">
+                <nz-skeleton-element [nzActive]="true"
+                                     nzType="input"
+                                     nzSize="small"
+                                     class="product-list__skeleton-price">
+                </nz-skeleton-element>
+            </ng-container>
+            <ng-template #maxPriceField>
+                <input id="maxPrice"
+                       nz-input
+                       formControlName="max"
+                       type="number"
+                       step="1"
+                       [placeholder]="'Максимум ' + (maxPrice$ | async)"
+                       [value]="maxPrice$ | async" />
+            </ng-template>
+
             <button nz-button
                     nzType="primary"
                     class="product-list__btn--apply"

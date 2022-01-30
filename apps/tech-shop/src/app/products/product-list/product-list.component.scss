@@ -5,20 +5,29 @@
     }
 
     &__offset--top {
-     padding-top: var(--offset)
+      padding-top: var(--offset);
     }
 
     &__checkbox {
-      display: flex; 
-      align-items: center; 
+      display: flex;
+      align-items: center;
       margin: 0;
     }
-    
+
     &__skeleton-container {
       display: flex;
       flex-direction: column;
       width: calc(var(--offset) * 94);
       margin-left: var(--offset);
+    }
+
+    &__skeleton-price {
+      display: block;
+      width: 100%;
+
+      &:first-of-type {
+        margin-bottom: var(--offset);
+      }
     }
 
     &__skeleton-text {
