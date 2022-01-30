@@ -54,28 +54,14 @@
                                  class="product-list__skeleton-element"
                                  [nzActive]="true">
             </nz-skeleton-element>
-            <div class="product-list__skeleton-text">
-                <nz-skeleton-element nzType="input"
+            <nz-space class="product-list__skeleton-text">
+                <nz-skeleton-element [nzActive]="true"
+                                     *ngFor="let i of 4 | arrayFromNumber"
+                                     nzType="input"
                                      nzSize="small"
-                                     class="product-list__skeleton-element"
-                                     [nzActive]="true">
+                                     class="product-list__skeleton-element">
                 </nz-skeleton-element>
-                <nz-skeleton-element nzType="input"
-                                     nzSize="small"
-                                     class="product-list__skeleton-element"
-                                     [nzActive]="true">
-                </nz-skeleton-element>
-                <nz-skeleton-element nzType="input"
-                                     nzSize="small"
-                                     class="product-list__skeleton-element"
-                                     [nzActive]="true">
-                </nz-skeleton-element>
-                <nz-skeleton-element nzType="input"
-                                     nzSize="small"
-                                     class="product-list__skeleton-element"
-                                     [nzActive]="true">
-                </nz-skeleton-element>
-            </div>
+            </nz-space>
         </nz-space>
     </div>
 

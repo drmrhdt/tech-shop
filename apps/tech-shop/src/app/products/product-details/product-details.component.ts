@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { ProductDetails } from '../../../models/productDetails';
 import { ProductActions } from '../action-types';
 import { Observable } from 'rxjs';
-import { selectDetailedProduct } from '../products.selectors';
+import { selectDetailedProduct, selectIsLoading } from '../products.selectors';
 import { ShoppingCartActions } from '../../shopping-cart/action-types';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
@@ -16,6 +16,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class ProductDetailsComponent implements OnInit {
   product$: Observable<ProductDetails> = new Observable();
+  isLoading$: Observable<boolean> = new Observable();
   isShowAllCharacteristics = false;
 
   constructor(private store: Store) {}
@@ -23,6 +24,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(ProductActions.loadProductDetails());
     this.product$ = this.store.select(selectDetailedProduct);
+    this.isLoading$ = this.store.select(selectIsLoading);
   }
 
   addToCart() {

@@ -4,6 +4,57 @@
       padding: 0 40px;
     }
 
+    &__skeleton {
+      &-container {
+        display: flex;
+        align-items: flex-start;
+        width: 60%;
+        height: 500px;
+      }
+
+      &-element {
+        &:first-of-type {
+          width: 40%;
+
+          ::ng-deep {
+            span {
+              width: 400px;
+            }
+          }
+        }
+
+        &:nth-of-type(n) {
+          margin-bottom: 5px;
+        }
+
+        &:nth-of-type(2) {
+          width: 30%;
+        }
+
+        &:nth-of-type(3) {
+          width: 10%;
+        }
+
+        &:nth-of-type(4) {
+          width: 7%;
+        }
+
+        &:nth-of-type(5) {
+          width: 20%;
+        }
+
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(9),
+        &:nth-of-type(10),
+        &:nth-of-type(11),
+        &:nth-of-type(12) {
+          width: 80%;
+        }
+      }
+    }
+
     &__characteristic {
       margin-bottom: var(--offset) !important;
     }

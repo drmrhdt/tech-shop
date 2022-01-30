@@ -1,49 +1,69 @@
 <tech-shop-wrapper>
-    <section nzSpan="8">
-        <img class="product__image"
-             [src]="(product$ | async)!.images[0].url ?? ''"
-             [alt]="(product$ | async)?.name">
-    </section>
-    <article nzSpan="8"
-             class="product__details">
-        <h1>{{(product$ | async)?.name}}</h1>
-        <tech-shop-rating [length]="(product$ | async)?.feedbacksCount || 0"></tech-shop-rating>
-        <p>{{(product$ | async)?.feedbacksCount}} {{(product$ | async)?.feedbacksCount || 0 | pluralize: ['отзыв',
-            'отзыва',
-            'отзывов']}}</p>
-        <div nzSpan="4">
-            <p><strong>{{(product$ | async)?.price}}$</strong></p>
-            <button nz-button
-                    nzType="primary"
-                    (click)="addToCart()">
-                Добавить в корзину
-            </button>
-        </div>
-        <h2>Характеристики</h2>
-        <div class="product__characteristic"
-             *ngFor="let characteristic of (product$ | async)?.characteristics; let index = index"
-             [ngStyle]="{display: isShowAllCharacteristics || index < 2 ? 'block' : 'none'}">
-            <strong>{{characteristic.title}}</strong>
-            <ul *ngFor="let option of characteristic.items">
-                <li>{{option.name}}: {{option.value}}</li>
-            </ul>
-        </div>
-        <summary>
-            <a nz-button
-               nzType="link"
-               (click)="isShowAllCharacteristics = !isShowAllCharacteristics">
-                {{ isShowAllCharacteristics ? 'Скрыть' : 'Все характеристики'}}
-            </a>
-        </summary>
-        <nz-tabset class="product__tabset">
-            <nz-tab nzTitle="Описание">{{(product$ | async)?.description}}</nz-tab>
-            <nz-tab nzTitle="Отзывы">
-                <div *ngFor="let feedback of (product$ | async)?.feedbacks">
-                    {{feedback._id}}
-                    <p>{{feedback.advantages}}</p>
-                    <tech-shop-rating [length]="feedback.rate"></tech-shop-rating>
-                </div>
-            </nz-tab>
-        </nz-tabset>
-    </article>
+    <ng-container *ngIf="isLoading$ | async; else productDetails">
+        <nz-space nzDirection="horizontal"
+                  class="product__skeleton-container">
+            <nz-skeleton-element nzType="image"
+                                 class="product__skeleton-element"
+                                 [nzActive]="true">
+            </nz-skeleton-element>
+            <nz-space nzDirection="vertical"
+                      style="width: 60%">
+                <nz-skeleton-element [nzActive]="true"
+                                     *ngFor="let i of 12 | arrayFromNumber"
+                                     nzType="input"
+                                     nzSize="small"
+                                     class="product__skeleton-element">
+                </nz-skeleton-element>
+            </nz-space>
+        </nz-space>
+    </ng-container>
+    <ng-template #productDetails>
+        <section nzSpan="8">
+            <img class="product__image"
+                 [src]="(product$ | async)!.images[0].url ?? ''"
+                 [alt]="(product$ | async)?.name">
+        </section>
+        <article nzSpan="8"
+                 class="product__details">
+            <h1>{{(product$ | async)?.name}}</h1>
+            <tech-shop-rating [length]="(product$ | async)?.feedbacksCount || 0"></tech-shop-rating>
+            <p>{{(product$ | async)?.feedbacksCount}} {{(product$ | async)?.feedbacksCount || 0 | pluralize: ['отзыв',
+                'отзыва',
+                'отзывов']}}</p>
+            <div nzSpan="4">
+                <p><strong>{{(product$ | async)?.price}}$</strong></p>
+                <button nz-button
+                        nzType="primary"
+                        (click)="addToCart()">
+                    Добавить в корзину
+                </button>
+            </div>
+            <h2>Характеристики</h2>
+            <div class="product__characteristic"
+                 *ngFor="let characteristic of (product$ | async)?.characteristics; let index = index"
+                 [ngStyle]="{display: isShowAllCharacteristics || index < 2 ? 'block' : 'none'}">
+                <strong>{{characteristic.title}}</strong>
+                <ul *ngFor="let option of characteristic.items">
+                    <li>{{option.name}}: {{option.value}}</li>
+                </ul>
+            </div>
+            <summary>
+                <a nz-button
+                   nzType="link"
+                   (click)="isShowAllCharacteristics = !isShowAllCharacteristics">
+                    {{ isShowAllCharacteristics ? 'Скрыть' : 'Все характеристики'}}
+                </a>
+            </summary>
+            <nz-tabset class="product__tabset">
+                <nz-tab nzTitle="Описание">{{(product$ | async)?.description}}</nz-tab>
+                <nz-tab nzTitle="Отзывы">
+                    <div *ngFor="let feedback of (product$ | async)?.feedbacks">
+                        {{feedback._id}}
+                        <p>{{feedback.advantages}}</p>
+                        <tech-shop-rating [length]="feedback.rate"></tech-shop-rating>
+                    </div>
+                </nz-tab>
+            </nz-tabset>
+        </article>
+    </ng-template>
 </tech-shop-wrapper>
