@@ -2,11 +2,12 @@ import { createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { Product } from '@models/index';
 import { ProductActions } from '../action-types';
+import { ProductDetails } from '../../../models/productDetails';
 
 export const mainFeatureKey = 'products';
 
 export interface ProductsState extends EntityState<Product> {
-  selectedProduct: any;
+  selectedProduct: ProductDetails;
   isLoading: boolean;
   isLoadingBrands: boolean;
   prices: { min: number; max: number };
@@ -24,7 +25,7 @@ export const adapter = createEntityAdapter<Product>({
   selectId: (product: Product) => product._id,
 });
 export const initialProductsState = adapter.getInitialState({
-  selectedProduct: {},
+  selectedProduct: {} as ProductDetails,
   isLoading: false,
   isLoadingBrands: false,
   prices: { min: 0, max: 0 },

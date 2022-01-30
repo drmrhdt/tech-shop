@@ -59,7 +59,7 @@ export class ProductsEffects {
     return this.actions$.pipe(
       ofType(ProductActions.loadProductDetails),
       withLatestFrom(this.store.pipe(select(selectRouteParams))),
-      switchMap((data: any) => this.getProductDetails(data[1].productName)),
+      switchMap((data: any[]) => this.getProductDetails(data[1].productName)),
       map(({ data }) =>
         ProductActions.productDetailsLoaded({
           product: data,

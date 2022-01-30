@@ -10,7 +10,7 @@ import { ShoppingCartActions } from '@shopping-cart/store/action-types';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent {
-  @Input() product: any;
+  @Input() product: Product = {} as Product;
   @Input() isShowButton = true;
   @Input() isShowPrice = true;
 
