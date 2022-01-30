@@ -32,7 +32,7 @@ const routes: Routes = [
     ProductDetailsModule,
     RatingModule,
     StoreModule.forFeature(
-      fromProducts.mainFeatureKey,
+      fromProducts.homeFeatureKey,
       fromProducts.productsReducer
     ),
     EffectsModule.forFeature([ProductsEffects]),

@@ -1,11 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { MainActions } from '../action-types';
+import { HomeActions } from '../action-types';
 import { Suggestion } from '@models/index';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
-export const mainFeatureKey = 'main';
+export const homeFeatureKey = 'home';
 
-export interface MainState extends EntityState<Suggestion> {
+export interface HomeState extends EntityState<Suggestion> {
   isLoading: boolean;
 }
 
@@ -16,13 +16,13 @@ export const initialSuggestionState = adapter.getInitialState({
   isLoading: false,
 });
 
-export const mainReducer = createReducer(
+export const homeReducer = createReducer(
   initialSuggestionState,
   on(
-    MainActions.loadSuggestions,
-    (state): MainState => ({ ...state, isLoading: true })
+    HomeActions.loadSuggestions,
+    (state): HomeState => ({ ...state, isLoading: true })
   ),
-  on(MainActions.loadedSuggestions, (state: MainState, { suggestions }) =>
+  on(HomeActions.loadedSuggestions, (state: HomeState, { suggestions }) =>
     adapter.setAll(suggestions, { ...state, isLoading: false })
   )
 );

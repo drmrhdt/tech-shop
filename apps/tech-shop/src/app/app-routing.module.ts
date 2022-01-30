@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 
-import { MainComponent } from './main/main.component';
+import { HomeComponent } from './home/home.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainComponent,
+    component: HomeComponent,
   },
   {
     path: 'category',

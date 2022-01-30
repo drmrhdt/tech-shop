@@ -22,7 +22,7 @@ import {
   PlusOutline,
   MinusOutline,
 } from '@ant-design/icons-angular/icons';
-import { MainModule } from './main/main.module';
+import { HomeModule } from './home/home.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { reducers, metaReducers } from './reducers';
 
@@ -42,7 +42,7 @@ const icons: IconDefinition[] = [
     NzGridModule,
     NzIconModule,
     NzIconModule.forRoot(icons),
-    MainModule,
+    HomeModule,
     ShoppingCartModule,
     StoreModule.forRoot(reducers, {
       metaReducers,

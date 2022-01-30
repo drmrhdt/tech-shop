@@ -4,7 +4,7 @@ import { Product } from '@models/index';
 import { ProductActions } from '../action-types';
 import { ProductDetails } from '../../../models/productDetails';
 
-export const mainFeatureKey = 'products';
+export const homeFeatureKey = 'products';
 
 export interface ProductsState extends EntityState<Product> {
   selectedProduct: ProductDetails;

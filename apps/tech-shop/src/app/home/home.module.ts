@@ -16,14 +16,14 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 import { RatingModule, MenuModule, WrapperModule } from '@shared/index';
 
-import { MainComponent } from './main.component';
+import { HomeComponent } from './home.component';
 import { PipesModule } from '@shared/pipes/pipes.module';
 
-import * as fromMain from './store/reducers';
-import { MainEffects } from './store/main.effects';
+import * as fromHome from './store/reducers';
+import { HomeEffects } from './store/home.effects';
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -39,9 +39,9 @@ import { MainEffects } from './store/main.effects';
     NzLayoutModule,
     RatingModule,
     PipesModule,
-    StoreModule.forFeature(fromMain.mainFeatureKey, fromMain.mainReducer),
-    EffectsModule.forFeature([MainEffects]),
+    StoreModule.forFeature(fromHome.homeFeatureKey, fromHome.homeReducer),
+    EffectsModule.forFeature([HomeEffects]),
   ],
-  exports: [MainComponent],
+  exports: [HomeComponent],
 })
-export class MainModule {}
+export class HomeModule {}

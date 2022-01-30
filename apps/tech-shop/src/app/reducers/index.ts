@@ -12,7 +12,7 @@ import {
 
 import { environment } from '../../environments/environment';
 
-export const mainFeatureKey = 'main';
+export const homeFeatureKey = 'home';
 
 export interface AppState {}
 

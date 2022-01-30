@@ -3,18 +3,18 @@ import { HttpClient } from '@angular/common/http';
 
 import { catchError, EMPTY, map, switchMap } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { MainActions } from './action-types';
+import { HomeActions } from './action-types';
 
 @Injectable()
-export class MainEffects {
+export class HomeEffects {
   constructor(private actions$: Actions, private _http: HttpClient) {}
 
   loadSuggestions$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(MainActions.loadSuggestions),
+      ofType(HomeActions.loadSuggestions),
       switchMap(() => this.getRandomSuggestions()),
       map(({ data: { items } }) =>
-        MainActions.loadedSuggestions({ suggestions: items })
+        HomeActions.loadedSuggestions({ suggestions: items })
       ),
       catchError(() => EMPTY)
     );
