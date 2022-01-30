@@ -1,6 +1,6 @@
 :host {
   .shopping-cart {
-    padding: 10px;
+    padding: var(--offset);
 
     border: 1px solid var(--gray);
     border-radius: 4px;;
@@ -11,7 +11,7 @@
     }
 
     &__total-price {
-      margin-bottom: 10px;
+      margin-bottom: var(--offset);
 
       font-size: 1.3em;
     }
@@ -51,7 +51,7 @@
     }
 
     &__input {
-      width: 400px;
+      width: calc(var(--offset) * 40);
     }
 
     &__btn--order {

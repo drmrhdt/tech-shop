@@ -9,7 +9,7 @@
   }
 
   .carousel {
-    height: 250px;
+    height: calc(var(--offset) * 25);
     overflow: hidden;
 
     color: var(--color-white);
@@ -17,7 +17,7 @@
     background: linear-gradient(var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3));
 
     &-skeleton {
-      height: 250px;
+      height: calc(var(--offset) * 25);
     }
 
     &__content {
@@ -40,7 +40,7 @@
 
   .suggestions {
     &__skeleton {
-      margin-top: 20px;
+      margin-top: calc(var(--offset) * 20);
     }
 
     &__skeleton-container {
@@ -50,7 +50,7 @@
     }
 
     &__skeleton-title {
-      width: 300px;
+      width: calc(var(--offset) * 30);
     }
 
     &__skeleton-item {
@@ -74,7 +74,7 @@
     }
 
     &__title {
-      padding-top: 10px;
+      padding-top: var(--offset);
     }
   }
 
@@ -97,7 +97,7 @@
     &__img {
       width: auto;
       max-width: 100%;
-      max-height: 150px;
+      max-height: calc(var(--offset) * 15);
     }
   }
 }

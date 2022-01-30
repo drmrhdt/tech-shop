@@ -1,7 +1,7 @@
 :host {
   .product {
     &__details {
-      padding: 0 40px;
+      padding: 0 calc(var(--offset) * 4);
     }
 
     &__skeleton {
@@ -9,7 +9,7 @@
         display: flex;
         align-items: flex-start;
         width: 60%;
-        height: 500px;
+        height: calc(var(--offset) * 50);
       }
 
       &-element {
@@ -18,13 +18,13 @@
 
           ::ng-deep {
             span {
-              width: 400px;
+              width: calc(var(--offset) * 40);
             }
           }
         }
 
         &:nth-of-type(n) {
-          margin-bottom: 5px;
+          margin-bottom: calc(var(--offset) / 2);
         }
 
         &:nth-of-type(2) {
@@ -61,11 +61,11 @@
 
     &__tabset,
     &__characteristic {
-      width: 600px;
+      width: calc(var(--offset) * 60);
     }
 
     &__image {
-      width: 400px;
+      width: calc(var(--offset) * 40);
     }
   }
 }

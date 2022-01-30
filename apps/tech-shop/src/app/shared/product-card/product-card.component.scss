@@ -1,22 +1,22 @@
 :host {
   width: 90%;
-  
+
   .product {
     display: flex;
     flex-direction: row;
     margin-bottom: var(--offset);
-    padding: 10px 0 0 10px;
+    padding: var(--offset) 0 0 var(--offset);
 
     &__name {
       cursor: pointer;
     }
 
     &__btn {
-      margin-top: 10px;
+      margin-top: var(--offset);
     }
 
     &__img {
-      max-width: 150px;
+      max-width: calc(var(--offset) * 15);
 
       cursor: pointer;
     }

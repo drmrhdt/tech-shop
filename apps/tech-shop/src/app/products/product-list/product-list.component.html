@@ -2,15 +2,15 @@
     <div>
         <tech-shop-menu></tech-shop-menu>
         <ng-container [formGroup]="form">
-            <h2>Фильтры по товарам</h2>
+            <h2 class="product-list__offset--top">Фильтры по товарам</h2>
             <h3>По названию</h3>
             <input id="address"
                    nz-input
                    placeholder="Фильтр по названию"
                    formControlName="filterString" />
-            <h3>Бренд</h3>
+            <h3 class="product-list__offset--top">Бренд</h3>
             <ng-container formArrayName="brands">
-                <label style="display: flex; align-items: center;"
+                <label class="product-list__checkbox"
                        nz-checkbox
                        *ngFor="let brand of brands$ | async"
                        [formControlName]="brand"
@@ -18,7 +18,7 @@
                     {{brand}}
                 </label>
             </ng-container>
-            <h3>Цена</h3>
+            <h3 class="product-list__offset--top">Цена</h3>
             <label for="minPrice">От</label>
             <input id="minPrice"
                    nz-input
@@ -68,7 +68,7 @@
     <ng-template #cardList>
         <section nz-col
                  nzSpan="12"
-                 class="product-list__offset">
+                 class="product-list__offset--left">
             <ng-container *ngIf="(products$ | async)?.length; else noProducts">
                 <tech-shop-product-card *ngFor="let product of products$ | async"
                                         [product]="product">
