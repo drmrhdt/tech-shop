@@ -11,6 +11,7 @@ import {
   switchMap,
   forkJoin,
   withLatestFrom,
+  of,
 } from 'rxjs';
 
 import { ProductActions } from './action-types';
@@ -29,18 +30,26 @@ export class ProductsEffects {
     this.actions$.pipe(
       ofType(ProductActions.loadAllProductsAccordingToSubcategory),
       switchMap(
-        ({ filters: { brands, filterString, max, min, subcategory } }) =>
-          forkJoin([
+        ({ filters: { brands, filterString, max, min, subcategory } }) => {
+          this.store.dispatch(
+            ProductActions.loadBrandsAccordingToSubcategory()
+          );
+          return forkJoin([
             this.getProductList(subcategory, max, min, brands, filterString),
             this.getBrands(subcategory),
-          ])
+          ]);
+        }
       ),
-      map((data) =>
-        ProductActions.allProductsAccordingToSubcategoryLoaded({
-          products: data[0].data.items,
-          prices: data[0].data.prices,
-          brands: data[1].data,
-        })
+      switchMap((data) =>
+        of(
+          ProductActions.allProductsAccordingToSubcategoryLoaded({
+            products: data[0].data.items,
+            prices: data[0].data.prices,
+          }),
+          ProductActions.allBrandsAccordingToSubcategoryLoaded({
+            brands: data[1].data,
+          })
+        )
       ),
       catchError(() => EMPTY)
     )

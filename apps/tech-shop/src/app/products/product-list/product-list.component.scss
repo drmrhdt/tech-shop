@@ -8,6 +8,15 @@
       padding-top: var(--offset);
     }
 
+    &__offset--bottom {
+      margin-bottom: var(--offset);
+    }
+
+    &__skeleton-brands-container {
+      display: flex;
+      flex-direction: column;
+    }
+
     &__checkbox {
       display: flex;
       align-items: center;
@@ -17,7 +26,7 @@
     &__skeleton-container {
       display: flex;
       flex-direction: column;
-      width: calc(var(--offset) * 94);
+      width: 825px;
       margin-left: var(--offset);
     }
 

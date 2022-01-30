@@ -1,7 +1,7 @@
 <tech-shop-wrapper>
     <div>
         <tech-shop-menu></tech-shop-menu>
-        <ng-container [formGroup]="form">
+        <div [formGroup]="form">
             <h2 class="product-list__offset--top">Фильтры по товарам</h2>
             <h3>По названию</h3>
             <input id="address"
@@ -9,17 +9,27 @@
                    placeholder="Фильтр по названию"
                    formControlName="filterString" />
             <h3 class="product-list__offset--top">Бренд</h3>
-            <ng-container formArrayName="brands">
-                <label class="product-list__checkbox"
-                       nz-checkbox
-                       *ngFor="let brand of brands$ | async"
-                       [formControlName]="brand"
-                       (click)="toggleBrand(brand)">
-                    {{brand}}
-                </label>
-            </ng-container>
+            <div class="product-list__skeleton-brands-container"
+                 *ngIf="isLoadingBrands$ | async; else brandsBlock">
+                <nz-skeleton-element [nzActive]="true"
+                                     *ngFor="let i of 4 | arrayFromNumber"
+                                     nzType="input"
+                                     nzSize="small"
+                                     class="product-list__offset--bottom">
+                </nz-skeleton-element>
+            </div>
+            <ng-template #brandsBlock>
+                <ng-container formArrayName="brands">
+                    <label class="product-list__checkbox"
+                           nz-checkbox
+                           *ngFor="let brand of brands$ | async"
+                           [formControlName]="brand"
+                           (click)="toggleBrand(brand)">
+                        {{brand}}
+                    </label>
+                </ng-container>
+            </ng-template>
             <h3 class="product-list__offset--top">Цена</h3>
-
             <label for="minPrice">
                 От
             </label>
@@ -68,7 +78,7 @@
                     (click)="updateProducts()">
                 Применить
             </button>
-        </ng-container>
+        </div>
     </div>
     <div *ngIf="isLoading$ | async; else cardList"
          class="product-list__skeleton-container">
@@ -89,7 +99,6 @@
             </nz-space>
         </nz-space>
     </div>
-
     <ng-template #cardList>
         <section nz-col
                  nzSpan="12"

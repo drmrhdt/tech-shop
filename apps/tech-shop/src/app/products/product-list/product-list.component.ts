@@ -13,6 +13,7 @@ import {
   selectMaxPrice,
   selectMinPrice,
   selectBrands,
+  selectIsLoadingBrands,
 } from '../products.selectors';
 import { ProductActions } from '../action-types';
 
@@ -26,6 +27,7 @@ export class ProductListComponent implements OnInit {
   products$: Observable<Product[]> = new Observable();
   brands$: Observable<string[] | undefined> = new Observable();
   isLoading$: Observable<boolean> = new Observable();
+  isLoadingBrands$: Observable<boolean> = new Observable();
 
   minPrice$: Observable<number> = new Observable();
   maxPrice$: Observable<number> = new Observable();
@@ -69,16 +71,19 @@ export class ProductListComponent implements OnInit {
     this.products$ = this.store.select(selectProducts);
     this.brands$ = this.store.select(selectBrands);
     this.isLoading$ = this.store.select(selectIsLoading);
+    this.isLoadingBrands$ = this.store.select(selectIsLoadingBrands);
 
     this.minPrice$ = this.store.select(selectMinPrice);
     this.maxPrice$ = this.store.select(selectMaxPrice);
 
     this.store
       .select(selectMinPrice)
-      .subscribe((min) => this.form.get('min')?.patchValue(min));
+      .pipe(untilDestroyed(this))
+      .subscribe((min: number) => this.form.get('min')?.patchValue(min));
     this.store
       .select(selectMaxPrice)
-      .subscribe((max) => this.form.get('max')?.patchValue(max));
+      .pipe(untilDestroyed(this))
+      .subscribe((max: number) => this.form.get('max')?.patchValue(max));
   }
 
   toggleBrand(brand: string): void {

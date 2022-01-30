@@ -13,12 +13,12 @@ export const loadAllProductsAccordingToSubcategory = createAction(
     };
   }>()
 );
+
 export const allProductsAccordingToSubcategoryLoaded = createAction(
   '[Load Products Effect] All Products According To Subcategory Loaded',
   props<{
     products: Product[];
     prices: { min: number; max: number };
-    brands: string[];
   }>()
 );
 
@@ -33,4 +33,15 @@ export const loadProductDetails = createAction(
 export const productDetailsLoaded = createAction(
   '[Product Details] Loaded Product Details',
   props<{ product: ProductDetails }>()
+);
+
+export const loadBrandsAccordingToSubcategory = createAction(
+  '[Product List] Load Brands According To Subcategory'
+);
+
+export const allBrandsAccordingToSubcategoryLoaded = createAction(
+  '[Load Products Effect] All Brands According To Subcategory Loaded',
+  props<{
+    brands: string[];
+  }>()
 );

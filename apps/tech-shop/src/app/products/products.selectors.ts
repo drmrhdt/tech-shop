@@ -21,6 +21,11 @@ export const selectIsLoading = createSelector(
   ({ isLoading }) => isLoading
 );
 
+export const selectIsLoadingBrands = createSelector(
+  selectProductsState,
+  ({ isLoadingBrands }) => isLoadingBrands
+);
+
 export const selectMinPrice = createSelector(
   selectProductsState,
   ({ prices }) => prices.min
