@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Category, Suggestion } from '../../models';
-import { MainActions } from './action-types';
+import { MainActions } from './store/action-types';
 import {
   selectIsLoadingSuggestions,
   selectSuggestions,
-} from './main.selectors';
+} from './store/main.selectors';
 import { Observable } from 'rxjs';
 import {
   selectCategories,

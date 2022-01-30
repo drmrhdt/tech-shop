@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Product } from '../../../models';
-import { ProductActions } from '../../products/action-types';
-import { ShoppingCartActions } from '../../shopping-cart/action-types';
+import { ProductActions } from '../../products/store/action-types';
+import { ShoppingCartActions } from '../../shopping-cart/store/action-types';
 
 @Component({
   selector: 'tech-shop-product-card',

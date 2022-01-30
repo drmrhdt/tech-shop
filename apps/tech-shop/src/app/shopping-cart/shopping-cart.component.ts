@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
-import { ShoppingCartActions } from './action-types';
-import { ProductInCart } from './reducer';
-import { selectProductsFromShoppingCart } from './shopping-cart.selectors';
+import { ShoppingCartActions } from './store/action-types';
+import { ProductInCart } from './store/reducer';
+import { selectProductsFromShoppingCart } from './store/shopping-cart.selectors';
 
 @Component({
   selector: 'tech-shop-shopping-cart',

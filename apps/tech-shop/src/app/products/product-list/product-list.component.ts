@@ -14,8 +14,8 @@ import {
   selectMinPrice,
   selectBrands,
   selectIsLoadingBrands,
-} from '../products.selectors';
-import { ProductActions } from '../action-types';
+} from '../store/products.selectors';
+import { ProductActions } from '../store/action-types';
 
 @UntilDestroy({ checkProperties: true })
 @Component({

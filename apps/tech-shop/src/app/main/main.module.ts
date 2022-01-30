@@ -21,8 +21,8 @@ import { RatingModule } from '../shared/rating/rating.module';
 import { MainComponent } from './main.component';
 import { PipesModule } from '../pipes/pipes.module';
 
-import * as fromMain from './reducers';
-import { MainEffects } from './main.effects';
+import * as fromMain from './store/reducers';
+import { MainEffects } from './store/main.effects';
 
 @NgModule({
   declarations: [MainComponent],

@@ -12,7 +12,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { WrapperModule } from '../shared/wrapper/wrapper.module';
 import { ProductCardModule } from '../shared/product-card/product-card.module';
-import * as fromShoppingCart from './reducer';
+import * as fromShoppingCart from './store/reducer';
 
 @NgModule({
   declarations: [ShoppingCartComponent],

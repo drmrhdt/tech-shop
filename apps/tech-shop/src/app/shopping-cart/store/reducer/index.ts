@@ -1,7 +1,7 @@
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 
-import { Product } from '../../../models';
+import { Product } from '../../../../models';
 import { ShoppingCartActions } from '../action-types';
 
 export const shoppingCartFeatureKey = 'shoppingCart';

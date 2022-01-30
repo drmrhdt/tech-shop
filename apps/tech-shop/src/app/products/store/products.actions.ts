@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Product, ProductDetails } from '../../models';
+import { Product, ProductDetails } from '../../../models';
 
 export const loadAllProductsAccordingToSubcategory = createAction(
   '[Products List] Load All Products According To Subcategory',

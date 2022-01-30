@@ -15,8 +15,8 @@ import {
 } from 'rxjs';
 
 import { ProductActions } from './action-types';
-import { selectRouteParams } from '../reducers';
-import { Product, ProductDetails } from '../../models';
+import { selectRouteParams } from '../../reducers';
+import { Product, ProductDetails } from '../../../models';
 
 @Injectable()
 export class ProductsEffects {

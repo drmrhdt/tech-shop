@@ -8,8 +8,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProductListModule } from './product-list/product-list.module';
 import { ProductDetailsModule } from './product-details/product-details.module';
 import { RatingModule } from '../shared/rating/rating.module';
-import { ProductsEffects } from './products.effects';
-import * as fromProducts from './reducers';
+import { ProductsEffects } from './store/products.effects';
+import * as fromProducts from './store/reducers';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 

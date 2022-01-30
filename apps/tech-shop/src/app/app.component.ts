@@ -3,10 +3,10 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
-import { ProductInCart } from './shopping-cart/reducer';
-import { setProductsToCart } from './shopping-cart/shopping-cart.actions';
+import { ProductInCart } from './shopping-cart/store/reducer';
+import { setProductsToCart } from './shopping-cart/store/shopping-cart.actions';
 
-import { selectTotalInShoppingCart } from './shopping-cart/shopping-cart.selectors';
+import { selectTotalInShoppingCart } from './shopping-cart/store/shopping-cart.selectors';
 
 @Component({
   selector: 'tech-shop-root',
