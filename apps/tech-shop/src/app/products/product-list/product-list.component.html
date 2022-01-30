@@ -1,5 +1,5 @@
 <tech-shop-wrapper>
-    <div>
+    <div nz-span="12">
         <tech-shop-menu></tech-shop-menu>
         <div [formGroup]="form">
             <h2 class="product-list__offset--top">Фильтры по товарам</h2>
@@ -80,7 +80,8 @@
             </button>
         </div>
     </div>
-    <div *ngIf="isLoading$ | async; else cardList"
+    <div nz-span="12"
+         *ngIf="isLoading$ | async; else cardList"
          class="product-list__skeleton-container">
         <nz-space *ngFor="let i of 6 | arrayFromNumber"
                   nzDirection="horizontal">

@@ -1,10 +1,16 @@
-<nz-skeleton [nzActive]="true"
-             *ngIf="isLoading$ | async; else navigation"
-             class="menu__skeleton">
-</nz-skeleton>
+<div nz-span="12"
+     *ngIf="isLoading$ | async; else navigation">
+    <nz-skeleton-element [nzActive]="true"
+                         *ngFor="let i of 7 | arrayFromNumber"
+                         nzType="input"
+                         nzSize="small"
+                         class="menu__skeleton-element">
+    </nz-skeleton-element>
+</div>
 <ng-template #navigation>
     <nav>
         <ul nz-menu
+            nz-span="12"
             class="menu">
             <li *ngFor="let category of categories$ | async, let index = index"
                 [(nzOpen)]="openMap['sub' + index]"
