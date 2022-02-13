@@ -46,10 +46,11 @@
                        formControlName="min"
                        type="number"
                        step="1"
-                       [min]="minPrice$ | async"
+                       *ngIf="(minPrice$ | async) as minPrice"
+                       [min]="minPrice"
                        [max]="maxPrice$ | async"
-                       [placeholder]="'Минимум ' + (minPrice$ | async)"
-                       [value]="minPrice$ | async" />
+                       [placeholder]="'Минимум ' + minPrice"
+                       [value]="minPrice" />
             </ng-template>
 
             <label for="maxPrice">
@@ -68,8 +69,9 @@
                        formControlName="max"
                        type="number"
                        step="1"
-                       [placeholder]="'Максимум ' + (maxPrice$ | async)"
-                       [value]="maxPrice$ | async" />
+                       *ngIf="(maxPrice$ | async) as maxPrice"
+                       [placeholder]="'Максимум ' + maxPrice"
+                       [value]="maxPrice" />
             </ng-template>
 
             <button nz-button
